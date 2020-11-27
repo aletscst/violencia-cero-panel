@@ -1,0 +1,34 @@
+.example-container {
+    width: 100%;
+    height: calc(100% - 107px);
+  }
+  .example-sidenav-content {
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .example-sidenav {
+    padding: 20px;
+  }
+  .link-menu{
+    padding-top: 7px;
+    cursor: pointer;
+    height: 40px;
+    text-align: center;
+  }
+  .link-menu:hover{
+    background-color: #eee;
+    color: #FF5900;
+    font-weight: 500;
+    border: 1px solid #bcbcbc;
+  }
+  .active{
+    background-color: #eee;
+    color: #FF5900;
+    font-weight: 500;
+  }
+  mat-icon:hover{
+    color: #FF5900;
+  }
+  

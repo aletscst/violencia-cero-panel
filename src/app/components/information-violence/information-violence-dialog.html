@@ -1,0 +1,45 @@
+<div class="row" id="modalMain">
+    <div class="col-md mt-3" id="htmlData" >
+        <div class="card" *ngIf="load">
+            <div class="row">
+                <div class="col-md-12 col-sm-10 mt-3">
+                    <input type="text" id="dataParrafo" class="form-control" [(ngModel)]="titleProcedure" value="{{parrafoObj.titulo}}"
+                        style="text-align: center;font-size: 26px;font-weight: 500;">
+                </div>
+            </div>
+            <form [formGroup]="frmEditProcedure">
+                <div class="container" [formArrayName]="'formArrayName'">
+                    <div *ngFor="let parrafo of parrafos;let i = index">
+                        <div [formGroupName]="i">
+                            <div class="row">
+                                <div class="col-md-12 mb-2 mt-2">
+                                    <input type="text" id="dataSub{{i}}" class="form-control"
+                                        formControlName="EditSubtitle" value="{{parrafo.subtitulo}}"
+                                        style="font-size: 20px;font-weight: 500;">
+                                </div>
+                                <div class="col-md-12 mb-2 mt-2">
+                                    <!--input type="area" id="dataParrafo{{i}}" class="form-control"
+                                        formControlName="EditParrafo" value="{{parrafo.texto}}"
+                                        style="font-size: 18px;font-weight: 350;"-->
+                                    <textarea class="form-control" id="dataParrafo{{i}}" formControlName="EditParrafo" value="{{parrafo.texto}}" style="font-size: 18px;font-weight: 350;" rows="4"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </form>
+            <div class="row">
+                <div class="col-md-6"></div>
+                <div class="col-md-2 my-2 mr-1">
+                    <button type="button" class="btn btn-secondary btn-sm" style="border-radius: 0;width: 100%;"
+                         (click)="addParrafo()">Agregar Parrafo</button>
+                </div>
+                <div class="col-md-2 my-2 mr-1">
+                    <button type="submit" class="btn btn-secondary btn-sm" style="border-radius: 0;width: 100%;"
+                        (click)="onSubmit()">Guardar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

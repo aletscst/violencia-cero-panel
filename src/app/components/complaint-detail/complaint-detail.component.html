@@ -1,0 +1,180 @@
+<div class="container" style="overflow-x: hidden;">
+    <div id="htmlData" class="row mt-4 mb-4" style="border: 1px solid #AEAEAE;padding: 10px;border-radius: 10px;">
+        <div class="col-md-12">
+            <h3 style="text-align: center;">REGISTRO DE ATENCIÓN</h3>
+        </div>
+        <div class="col-md-12">
+            <P style="float: right;font-weight: 500;">Fecha:&nbsp;{{dataResp.fechaSolicitud}}</P>
+        </div>
+        <div class="col-md-12 mt-2 mb-4">
+            <h5 style="text-align: center;letter-spacing: 3px;">SOLICITANTE</h5>
+        </div>
+        <form>
+            <div class="form-group row">
+                <label for="inputName" class="col-sm-2 col-form-label">Nombre(s):</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="inputName" [(ngModel)]="dataResp.solicitante.nombres" [ngModelOptions]="{standalone: true}" disabled>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-2 col-form-label" for="inputAP">Apellido Paterno:</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="inputAP" [(ngModel)]="dataResp.solicitante.apellidoPaterno" [ngModelOptions]="{standalone: true}" disabled>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-2 col-form-label" for="inputAM">Apellido Materno:</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="inputAM" [(ngModel)]="dataResp.solicitante.apellidoMaterno" [ngModelOptions]="{standalone: true}" disabled>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-2 col-form-label" for="inputGenero">Genero:</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="inputGenero" [(ngModel)]="dataResp.solicitante.genero" [ngModelOptions]="{standalone: true}" disabled>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-2 col-form-label" for="inputEdad">Edad:</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="inputEdad" [(ngModel)]="dataResp.solicitante.edad" [ngModelOptions]="{standalone: true}" disabled>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-2 col-form-label" for="inputTelefono">Numero de Teléfono:</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="inputTelefono" [(ngModel)]="dataResp.solicitante.telefono" [ngModelOptions]="{standalone: true}" disabled>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-2 col-form-label" for="inputNacimiento">Lugar de Nacimiento:</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="inputNacimiento" [(ngModel)]="dataResp.solicitante.lugarNacimiento" [ngModelOptions]="{standalone: true}" disabled>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-2 col-form-label" for="inputDomicilio">Domicilio Actual:</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="inputDomicilio" [(ngModel)]="dataResp.solicitante.domicilio" [ngModelOptions]="{standalone: true}" disabled>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-2 col-form-label" for="inputCP">Codigo Postal:</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="inputCP" [(ngModel)]="dataResp.solicitante.codigoPostal" [ngModelOptions]="{standalone: true}" disabled>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-2 col-form-label" for="inputEscolaridad">Escolaridad:</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="inputEscolaridad" [(ngModel)]="dataResp.solicitante.escolaridad" [ngModelOptions]="{standalone: true}" disabled>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-2 col-form-label" for="inputEstadoCivil">Estado Civil:</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="inputEstadoCivil" [(ngModel)]="dataResp.solicitante.edoCivil" [ngModelOptions]="{standalone: true}" disabled>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-2 col-form-label" for="inputOcupacion">Ocupacion:</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="inputOcupacion" [(ngModel)]="dataResp.solicitante.ocupacion" [ngModelOptions]="{standalone: true}" disabled>
+                </div>
+            </div>
+
+            <!--button class="btn btn-secondary btn-sm"
+                style="width: 100%;border-radius: 0;font-size: 20px;text-align: center;" (click)="downloadPDF()">
+                <mat-icon class="mt-auto mb-auto" style="font-size: 20px;"> insert_drive_file</mat-icon> &nbsp;PDF
+            </button-->
+        </form>
+    </div>
+    <div id="htmlData2" class="row mt-4 mb-4" style="border: 1px solid #AEAEAE;padding: 10px;border-radius: 10px;">
+        <div class="col-md-12 mt-4 mb-4">
+            <h5 style="text-align: center;">PERSONA SEÑALADA DE VIOLENTAR LA IGUALDAD Y LOS DERECHOS</h5>
+        </div>
+        <form>
+                <div class="form-group row">
+                    <label class="col-sm-2 col-form-label" for="inputNameDenunciado">Nombre(s):</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="inputNameDenunciado" [(ngModel)]="dataResp.denunciado.nombres" [ngModelOptions]="{standalone: true}" disabled>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-2 col-form-label" for="inputAPDenunciado">Apellido Paterno:</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="inputAPDenunciado" [(ngModel)]="dataResp.denunciado.apellidoPaterno" [ngModelOptions]="{standalone: true}" disabled>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-2 col-form-label" for="inputAMDenunciado">Apellido Materno:</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="inputAMDenunciado" [(ngModel)]="dataResp.denunciado.apellidoMaterno" [ngModelOptions]="{standalone: true}" disabled>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-2 col-form-label" for="inputParentescoDenunciado">Parentesco:</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="inputParentescoDenunciado" [(ngModel)]="dataResp.denunciado.parentesco" [ngModelOptions]="{standalone: true}" disabled>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-2 col-form-label" for="inputEdadDenunciado">Edad:</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="inputEdadDenunciado" [(ngModel)]="dataResp.denunciado.edad" [ngModelOptions]="{standalone: true}" disabled>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-2 col-form-label" for="inputOcupacionDenunciado">Ocupación:</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="inputOcupacionDenunciado" [(ngModel)]="dataResp.denunciado.ocupacion" [ngModelOptions]="{standalone: true}" disabled>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-2 col-form-label" for="inputDomicilioDenunciado">Domicilio Actual:</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="inputDomicilioDenunciado" [(ngModel)]="dataResp.denunciado.domicilio" [ngModelOptions]="{standalone: true}" disabled>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-2 col-form-label" for="inputCPDenunciado">Codigo Postal:</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="inputCPDenunciado" [(ngModel)]="dataResp.denunciado.codigoPostal" [ngModelOptions]="{standalone: true}" disabled>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-3 col-form-label" for="inputViolenciaDenunciado">¿ Que tipo de violencia ejerció ?:</label>
+                    <div class="col-sm-9">
+                        <textarea type="text" class="form-control" id="inputViolenciaDenunciado" rows="2" [(ngModel)]="dataResp.denunciado.tipoViolencia" [ngModelOptions]="{standalone: true}" disabled></textarea>
+                    </div>
+                </div>
+        </form>
+    </div>
+    <div id="htmlData3" class="row mt-4 mb-4" style="border: 1px solid #AEAEAE;padding: 10px;border-radius: 10px;">
+        <div class="col-md-12 mt-4 mb-4">
+            <h5 style="text-align: center;">DENUNCIA</h5>
+        </div>
+        <form>
+                <div class="form-group row">
+                    <label class="col-sm-2 col-form-label" for="validationTextarea">Describe tu problema:</label>
+                    <div class="col-sm-10">
+                        <textarea class="form-control " id="validationTextarea"
+                        placeholder="Explicitamente describe el problema" rows="8" [(ngModel)]="dataResp.descripcionProblema" [ngModelOptions]="{standalone: true}" disabled></textarea>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-3 col-form-label" for="inputAyuda">¿Qué ayuda necesitas?:</label>
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control" id="inputAyuda" [(ngModel)]="dataResp.tipoAyuda" [ngModelOptions]="{standalone: true}" disabled>
+                    </div>
+                </div>
+        </form>
+    </div>
+    <div class="row mt-4 mb-4">
+        <button class="btn btn-secondary btn-sm"
+                style="width: 100%;border-radius: 0;font-size: 20px;text-align: center;" (click)="downloadPDF()">
+                <mat-icon class="mt-auto mb-auto" style="font-size: 20px;"> insert_drive_file</mat-icon> &nbsp;PDF
+            </button>
+    </div>
+</div>
+<router-outlet></router-outlet>

@@ -1,0 +1,74 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md">
+            <div class="accordion" id="accordionExample">
+                <div class="card mt-3">
+                    <div class="card-header" id="headingOne">
+                        <h2 class="mb-0 ml-auto mr-auto">
+                            <button id="addProcedure" class="btn btn-link btn-block" type="button" data-toggle="collapse"
+                                data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne" style="color: #6c757d;">
+                                Agregar Informacion sobre la Violencia
+                            </button>
+                        </h2>
+                    </div>
+    
+                    <div id="collapseOne" class="collapse" aria-labelledby="headingOne"
+                        data-parent="#accordionExample">
+                        <div class="card-body">
+                            
+                                <div class="row">
+                                    <div class="form-group col-md-12">
+                                        <label for="exampleInputTitulo">Titulo</label>
+                                        <input type="text" class="form-control"  [(ngModel)]="titleProcedure" id="InputTitle" placeholder="Titulo" >
+                                    </div>
+                                    <div class="container">
+                                        <form [formGroup]="frmEditProcedure">
+                                            <div class="container" [formArrayName]="'formArrayName'">
+                                                <div class="form-group col-md-12" *ngFor="let parrafo of parrafos;let i = index">
+                                                    <div class="row" [formGroupName]="i">
+                                                        <div class="col-md-6 mt-2">
+                                                            <label for="exampleInputSubtitle">Subtitulo</label>
+                                                            <input type="text" class="form-control" formControlName="regSubtitle" value="{{parrafo.subtitulo}}" id="dataSub{{i}}" placeholder="Subtitle" required>
+                                                        </div>
+                                                        <div class="col-md-6 mt-2">
+                                                            <label for="exampleInputParrafo">Parrafo</label>
+                                                            <input type="text" class="form-control" formControlName="regParrafo" value="{{parrafo.texto}}" (ngModelChange)="onChange($event)" id="dataParrafo{{i}}" placeholder="Parrafo" required>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label for="mybutton">&nbsp; &nbsp;</label>
+                                        <button type="button" class="btn btn-secondary" style="width: 100%;" [disabled]="emptyParrafo" (click)="addParrafo(frmEditProcedure)">Agregar Parrafo</button>
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label for="mybutton">&nbsp; &nbsp;</label>
+                                        <button type="button" class="btn btn-secondary" (click)="SaveProcedure()" style="width: 100%;">Guardar</button>
+                                    </div>
+                                </div>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row mt-3">
+        <div class="col">
+            <ul class="list-group mt-1" *ngFor="let violence of dataViolence;let i = index" >
+                <li class="list-group-item">
+                    <div class="row">
+                        <div class="col-md-11" (click)="openDialog(violence)">
+                            {{violence.nombre}}
+                        </div>
+                        <div class="col-md-1" (click)="deleteProcedure(violence)" style="text-align:end ;">
+                            <mat-icon style="cursor:pointer">delete</mat-icon>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>

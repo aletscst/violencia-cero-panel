@@ -1,0 +1,12 @@
+#modalMain{
+    height: 80vh;
+    overflow-y: auto;
+}
+input.form-control {
+    width: 100%;
+    border: none;
+    background-color: white!important;
+}
+input.form-control:focus{
+    box-shadow: 0 0 0 0.2rem rgba(223,223,223,0.6)!important;
+}

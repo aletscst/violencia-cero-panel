@@ -1,0 +1,70 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="accordion" id="accordionExample">
+                <div class="card mt-3">
+                    <div class="card-header" id="headingOne">
+                        <h2 class="mb-0 ml-auto mr-auto">
+                            <button id="addUser" class="btn btn-link btn-block" type="button" data-toggle="collapse"
+                                data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne" style="color: #6c757d;">
+                                Agregar Contacto
+                            </button>
+                        </h2>
+                    </div>
+    
+                    <div id="collapseOne" class="collapse" aria-labelledby="headingOne"
+                        data-parent="#accordionExample">
+                        <div class="card-body">
+                            <form [formGroup]="frmContacts" (ngSubmit)="SaveContact(frmContacts.value)">
+                                <div class="row">
+                                    <div class="form-group col-md-6">
+                                        <label for="exampleInputEmail1">Nombre</label>
+                                        <input type="text" class="form-control" formControlName="regName" id="InputName" placeholder="Nombre" required>
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label for="exampleInputPassword1">Descripción</label>
+                                        <input type="text" class="form-control" formControlName="regDesc" id="InputDescription" placeholder="Descripcion" required>
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label for="exampleInputPassword2">Número</label>
+                                        <input type="text" class="form-control" formControlName="regNum" id="InputNumber" placeholder="Numero" required>
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label for="mybutton">&nbsp; &nbsp;</label>
+                                        <button type="submit" class="btn btn-secondary" [disabled]="!frmContacts.valid"  style="width: 100%;">Guardar</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md mt-3" style="width: 100%;">
+            <table class="table table-responsive">
+                <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Descripcion</th>
+                        <th scope="col">Número</th>
+                        <th scope="col">
+                            <mat-icon>edit</mat-icon>
+                        </th>
+                        <th scope="col">
+                            <mat-icon>delete</mat-icon>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let contactos of dataContacts;let i = index;">
+                        <td><input class="inputContact" id="nombre{{i}}" type="text" value="{{contactos.name}}" disabled></td>
+                        <td><input class="inputContact" id="desc{{i}}" type="text" value="{{contactos.description}}" disabled></td>
+                        <td><input class="inputContact" id="number{{i}}" type="text" value="{{contactos.number}}" disabled></td>
+                        <td><mat-icon style="cursor:pointer" (click)="editContact(contactos)">edit</mat-icon></td>
+                        <td><mat-icon style="cursor:pointer" (click)="deleteContact(contactos.id)">delete</mat-icon></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>    
+</div>

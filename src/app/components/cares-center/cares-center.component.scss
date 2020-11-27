@@ -1,0 +1,19 @@
+.card-header{
+    margin-bottom: auto!important;
+}
+.collapse{
+    border-bottom: 1px solid rgb(215, 215, 215);
+}
+#mapa{
+    width: 100%;
+    height: 400px;
+}
+#MakersList,#MakersListEdit:focus{
+    text-align: center;
+    outline: 0;
+    box-shadow: 0 0 0 0.2rem rgba(247,247,247,.25)!important;
+}
+#section-row:hover{
+    background-color: #eee;
+    color: #FF5900;
+}

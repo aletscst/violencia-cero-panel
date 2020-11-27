@@ -1,0 +1,51 @@
+
+.container{
+    background-color: #cacaca;
+    height: 100%
+}
+.card{
+    border: none!important;
+    border-radius: 5px;
+    height: 350px;
+    margin-top: calc(100% - 80%);
+}
+.mycardbody{
+    padding: 10px;
+}
+#logo{
+    width: 80%;
+    height: 100px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.listas{
+    margin-top: 5px;
+    margin-bottom: 5px;
+    padding-left: 5px;
+    padding-right: 5px;
+    display: block;
+    background-color: #fff;
+}
+input:focus{
+    border-color: #cacaca!important;
+    outline: 0;
+    box-shadow: 0 0 0 0.2rem rgba(202,202,202,.25)!important;
+}
+.linkref{
+    color: #7C7C7C;
+    font-weight: 500;
+}
+@media only screen 
+and (max-device-width : 824px) 
+and (max-device-height : 415px)
+and (orientation: landscape)
+{
+    .card{
+        border: none!important;
+        border-radius: 5px;
+        margin-top: auto;
+    }
+    .container{
+        height: inherit;
+    }
+ }

@@ -1,0 +1,95 @@
+<div class="row" style="margin: 0;overflow-x: hidden;">
+    <div class="container-fluid ml-1 mr-1" style="margin: 0;overflow-x:hidden;">
+        <div class="row mt-3 mb-3" style="border:1px solid rgba(0,0,0,.125);margin: 0;padding: 6px;border-radius: 5px;">
+            <div class="col-md-2"></div>
+            <div class="col-md-2">
+                <label for="exampleFormControlSelect1">Estatus</label>
+                <select class="form-control" id="exampleFormControlSelect1" [(ngModel)]="statusSearch">
+                    <option value="Nuevos">Nuevos</option>
+                    <option value="Completados">Completados</option>
+                    <option value="Cancelado">Cancelado</option>
+                    <option value="Proceso">Proceso</option>
+                </select>
+            </div>
+            <div class="col-md-2">
+                <label for="FormControlDateIni">Fecha Inicial:</label>
+                <input type="date" [(ngModel)]="dateIni" class="form-control" id="FormControlDateIni">
+            </div>
+            <div class="col-md-2">
+                <label for="FormControlDateFin">Fecha Final:</label>
+                <input type="date" [(ngModel)]="dateFin" class="form-control" id="FormControlDateFin">
+            </div>
+            <div class="col-md-2">
+                <label for="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                <button type="button" (click)="searchComplaint()" class="btn btn-secondary" style="width: 100%;">Buscar</button>
+            </div>
+            <div class="col-md-2"></div>
+        </div>
+    </div>
+    <div class="container-fluid ml-1 mr-1 mt-2 mb-2">
+        <div class="row" style="margin: 0;">
+            <div class="col-md-3">
+                <div class="card-body"
+                    style="border: 2px solid #0C21F4;border-radius: 10px; text-align: center;font-size: 18px;">
+                    Total Nuevos: 17
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card-body"
+                    style="border: 2px solid #08AC00;border-radius: 10px;text-align: center;font-size: 18px;">
+                    Total Completados: 48
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card-body"
+                    style="border: 2px solid #EE0000;border-radius: 10px;text-align: center;font-size: 18px;">
+                    Total Cancelado: 150
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card-body"
+                    style="border: 2px solid #777777;border-radius: 10px;text-align: center;font-size: 18px;">
+                    Total Proceso: 100
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-12 ml-1 mr-1">
+        <ul class="list-group mt-1" *ngFor="let complaint of dataComplaints;let i = index">
+            <li class="list-group-item" style="text-align: justify;">
+                <div class="row">
+                    <div class="col-md-2 col-sm-2" (click)="openComplaintDetail(complaint.id)" style="cursor: pointer;">
+                        <strong>Usuario:</strong>&nbsp;<p>{{complaint.usuarioSolicitante}}</p>
+                    </div>
+                    <div class="col-md-3 col-sm-3" (click)="openComplaintDetail(complaint.id)" style="cursor: pointer;">
+                        <strong>Solicitante:</strong>&nbsp;<p>{{complaint.nombreSolicitante}}</p>
+                    </div>
+                    <div class="col-md-2 col-sm-2" (click)="openComplaintDetail(complaint.id)" style="cursor: pointer;">
+
+                    </div>
+                    <div class="col-md-1 col-sm-1" (click)="openComplaintDetail(complaint.id)" style="cursor: pointer;">
+
+                    </div>
+                    <div class="col-md-2 col-sm-2" style="text-align: right;"
+                        (click)="openComplaintDetail(complaint.id)" style="cursor: pointer;">
+                        {{complaint.dateRequest}}
+                    </div>
+                    <div class="col-md-1 col-sm-1" style="padding: 0;">
+                        <!--a class="badge" [ngClass]="{'badge-success': complaint.status == 'Completado','badge-secondary': complaint.status == 'Verificando','badge-danger': complaint.status == 'Denegado','badge-info': complaint.status == 'Proceso'}" style="float: right;font-weight: 400; width: 75px;">
+                            {{complaint.status}}</a-->
+                        <select name="select" [(ngModel)]="complaint.estatus"
+                            [ngClass]="{'new': complaint.estatus === 'Nuevo','process':complaint.estatus === 'Proceso','canceled':complaint.estatus === 'Cancelado','complete':complaint.estatus === 'Completado'}">
+                            <option [ngValue]="status" *ngFor="let status of statusComplaint"
+                                [ngClass]="{'new': status === 'Nuevo','process':status === 'Proceso','canceled':status === 'Cancelado','complete':status === 'Completado'}">
+                                {{status}}</option>
+                            <!--option value="{{complaint.status}}" selected>{{complaint.status}}</option-->
+                        </select>
+                    </div>
+                    <div class="col-md-1 col-sm-1" style="text-align: center;">
+                        <mat-icon style="cursor:pointer" (click)="editStatus(complaint.estatus)">save</mat-icon>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>

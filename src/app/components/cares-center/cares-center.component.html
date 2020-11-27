@@ -1,0 +1,80 @@
+<div class="container">
+    <div class="row">
+        <div class="accordion" id="accordionMakersList" style="width: 100%;">
+            <div class="card mt-3">
+                <div class="card-header" id="headingOne">
+                    <h2 class="mb-0 ml-auto mr-auto">
+                        <button id="MakersList" class="btn btn-link btn-block" type="button" data-toggle="collapse"
+                            data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne" style="color: #6c757d;" (click)="statusMap()">
+                            Lista de Marcadores
+                        </button>
+                    </h2>
+                </div>
+
+                <div id="collapseOne" class="collapse show" aria-labelledby="headingOne"
+                    data-parent="#accordionMakersList">
+                    <div class="card-body">
+                        <form>
+                            <table class="table table-responsive">
+                                <thead class="thead-dark">
+                                    <tr>
+                                        <th scope="col">Nombre</th>
+                                        <th scope="col">Descripcion</th>
+                                        <th scope="col">Dirección</th>
+                                        <th scope="col">Longitud</th>
+                                        <th scope="col">Latitud</th>
+                                        <th scope="col">Editar</th>
+                                        <th scope="col">Eliminar</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr id="section-row" *ngFor="let marker of makersList;let i = index;"  style="cursor: pointer;">
+                                        <td (click)="openMarker(marker.lat,marker.long)">{{marker.nombre}}</td>
+                                        <td (click)="openMarker(marker.lat,marker.long)">{{marker.descripcion}}</td>
+                                        <td (click)="openMarker(marker.lat,marker.long)">{{marker.direccion}}</td>
+                                        <td (click)="openMarker(marker.lat,marker.long)">{{marker.lat}}</td>
+                                        <td (click)="openMarker(marker.lat,marker.long)">{{marker.long}}</td>
+                                        <td (click)="editMap(marker)"><mat-icon style="cursor:pointer" >edit</mat-icon></td>
+                                        <td (click)="delete(marker)"><mat-icon style="cursor:pointer" >delete</mat-icon></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="row mb-4" style="margin: 0;" *ngIf="showMap">
+                <div class="col-md-3">
+            
+                </div>
+                <div class="col-md-6 mt-3" style="padding: 0;">
+                    <div id="mapa">
+                
+                    </div>        
+                </div>
+                <div class="col-md-3">
+                    <button *ngIf="edit" (click)="saveMarker()" class="btn btn-secondary">Guardar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row mb-4">
+        <div class="accordion" id="accordionMakersListEdit" style="width: 100%;">
+            <div class="card mt-3">
+                <div class="card-header" id="headingOne">
+                    <h2 class="mb-0 ml-auto mr-auto">
+                        <button id="MakersListEdit" class="btn btn-link btn-block" type="button" data-toggle="collapse" (click)="statusMapEdit()"
+                            data-target="#collapseEdit" aria-expanded="false" aria-controls="collapseEdit" style="color: #6c757d;">
+                            Agregar Marcador
+                        </button>
+                    </h2>
+                </div>
+
+                <div id="collapseEdit" class="collapse show" aria-labelledby="headingOne"
+                    data-parent="#accordionMakersListEdit">
+                    <app-add-maker></app-add-maker>   
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

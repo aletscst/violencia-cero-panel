@@ -1,0 +1,13 @@
+.list-group{
+    cursor: pointer;
+}
+.list-group-item:hover{
+    background-color: #eee;
+    color: #FF5900;
+    font-weight: 500;
+}
+#addProcedure:focus{
+    text-align: center;
+    outline: 0;
+    box-shadow: 0 0 0 0.2rem rgba(247,247,247,.25)!important;
+}

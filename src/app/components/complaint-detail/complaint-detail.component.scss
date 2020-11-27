@@ -1,0 +1,17 @@
+form{
+    width: 100%;
+}
+#htmlData{
+    height: 100%;
+}
+input{
+    border: none;
+    font-weight: 500;
+    font-style: bold;
+}
+input:focus{
+    box-shadow: none;
+}
+input:disabled{
+    background-color:white;
+}

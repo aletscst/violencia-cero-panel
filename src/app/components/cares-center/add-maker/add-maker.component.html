@@ -1,0 +1,47 @@
+<div class="card-body">
+    <form>
+        <div class="col row">
+            <div class="form-group col-md-6">
+                <label for="exampleInputEmail1">Nombre</label>
+                <input type="text" class="form-control" [(ngModel)]="nameMarker" [ngModelOptions]="{standalone: true}" id="InputName" placeholder="Nombre">
+            </div>
+            <div class="form-group col-md-6">
+                <label for="exampleInputPassword1">Descripción</label>
+                <input type="text" class="form-control" [(ngModel)]="descMarker" [ngModelOptions]="{standalone: true}" id="InputDescription" placeholder="Descripcion">
+            </div>
+            <div class="form-group col-md-6">
+                <label for="exampleInputPassword2">Dirección</label>
+                <input type="text" class="form-control" [(ngModel)]="addresMarker" [ngModelOptions]="{standalone: true}" id="InputNumber" placeholder="Numero">
+            </div>
+            <!--div class="form-group col-md-6" id="geocoder">
+                <label for="Address">Dirección</label>
+            </div-->
+            <div class="form-group col-md-6">
+                <label for="exampleInputPassword2">Longitud</label>
+                <input type="text" class="form-control" id="InputLongitud" placeholder="Numero" [value]="longitud" disabled>
+            </div>
+            <div class="form-group col-md-6">
+                <label for="exampleInputPassword2">Latitud</label>
+                <input type="text" class="form-control" id="InputLatitud" placeholder="Numero" [value]="latitud" disabled>
+            </div>
+            <div class="form-group col-md-6">
+                <label for="mybutton">&nbsp; &nbsp;</label>
+                <button type="button" class="btn btn-secondary" (click)="addMarker()" style="width: 100%;">Guardar</button>
+            </div>
+        </div>
+    </form>
+</div> 
+<div class="row mb-3">
+    <div class="col-md-3">
+
+    </div>
+    <div class="col-md-6">
+        <div id="mapaEdit">
+                
+        </div>    
+    </div>
+    <div class="col-md-3">
+
+    </div>
+</div>
+
