@@ -50,6 +50,7 @@ export class InformationViolenceComponent implements OnInit {
   loadProcedure(){
     this.serviceViolence.getListViolence().subscribe(resp=>{
       this.dataViolence = resp.data;
+      console.log("Violencia:",this.dataViolence)
       console.log(resp)
     });
   }
@@ -164,7 +165,7 @@ export class InformationViolence implements OnInit{
   public titleProcedure:String='';
   public frmEditProcedure: FormGroup;
 
-  constructor(@Inject(MAT_DIALOG_DATA) public data: Data, private serviceProcedure:ProceduresService,private _fb: FormBuilder,private dialogRef: MatDialogRef<InformationViolence>,public dialog: MatDialog) 
+  constructor(@Inject(MAT_DIALOG_DATA) public data: Data, private serviceViolence:InformationViolenceService,private _fb: FormBuilder,private dialogRef: MatDialogRef<InformationViolence>,public dialog: MatDialog) 
   {
     this.frmEditProcedure = new FormGroup({
       formArrayName: this._fb.array([])
@@ -175,7 +176,7 @@ export class InformationViolence implements OnInit{
   
   ngOnInit(): void {
 
-    this.serviceProcedure.getProcedurebyID(this.data.id).subscribe( resp =>{
+    this.serviceViolence.getViolencebyID(this.data.id).subscribe( resp =>{
       this.parrafoObj = resp; 
       this.parrafos = resp.parrafos;
       this.titleProcedure = this.parrafoObj.titulo;
@@ -220,7 +221,7 @@ export class InformationViolence implements OnInit{
     this.sendJsonID.titulo = this.titleProcedure;
     this.sendJsonID.parrafos = this.parrafos;
     console.log(this.sendJsonID);
-    this.serviceProcedure.updateProcedure(this.parrafoObj.id,this.sendJsonID).subscribe(resp=>{
+    this.serviceViolence.updateViolence(this.parrafoObj.id,this.sendJsonID).subscribe(resp=>{
       if(resp.status)
       console.log("se ha actualizado")
       else

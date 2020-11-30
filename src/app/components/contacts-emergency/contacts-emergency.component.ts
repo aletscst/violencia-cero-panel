@@ -44,7 +44,7 @@ export class ContactsEmergencyComponent implements OnInit {
   }
   editContact(id: Contacts) {
     this.isEdit = true;
-    console.log(id);
+    //console.log(id);
     this.openDialog(id)
   }
   deleteContact(id: number) {
@@ -88,12 +88,32 @@ export class ContactsEmergencyComponent implements OnInit {
 })
 export class ContactEditDialog implements OnInit {
 
-  constructor(@Inject(MAT_DIALOG_DATA) public data: Contacts) { }
+  public id:String;
+
+  public senObj:ContactsSend={
+    description:'',
+    name:'',
+    number:''
+  };
+
+  constructor(@Inject(MAT_DIALOG_DATA) public data: Contacts,private serviceContacts:ContactsEmergencyService) { }
 
   ngOnInit(): void {
+    //this.serviceContacts.updateContacto()
     console.log(this.data)
+    this.id = this.data.id;
   }
 
-  
+  updateContact(){
+    this.senObj.description = this.data.description;
+    this.senObj.name = this.data.name;
+    this.senObj.number = this.data.number;
+    this.serviceContacts.updateContacto(Number(this.id),this.senObj).subscribe(resp=>{
+      if(resp.status)
+      console.log("Se actualizo con exito")
+      else
+      alert("No se pudo actualizar")
+    })
+  }
 
 }

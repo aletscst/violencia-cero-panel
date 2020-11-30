@@ -8,19 +8,19 @@
                 <div class="col row">
                     <div class="form-group col-md-6">
                         <label for="exampleInputEmail1">Nombre</label>
-                        <input type="text" class="form-control" id="InputName" placeholder="Nombre" [value]="data.name">
+                        <input type="text" class="form-control" id="InputName" [ngModelOptions]="{standalone: true}" [(ngModel)]="data.name" placeholder="Nombre" >
                     </div>
                     <div class="form-group col-md-6">
                         <label for="exampleInputPassword1">Descripción</label>
-                        <input type="text" class="form-control" id="InputDescription" placeholder="Descripcion" [value]="data.description">
+                        <input type="text" class="form-control" id="InputDescription" [ngModelOptions]="{standalone: true}" [(ngModel)]="data.description" placeholder="Descripcion" >
                     </div>
                     <div class="form-group col-md-6">
                         <label for="exampleInputPassword2">Número</label>
-                        <input type="text" class="form-control" id="InputNumber" placeholder="Numero" [value]="data.number">
+                        <input type="text" class="form-control" id="InputNumber" [ngModelOptions]="{standalone: true}" [(ngModel)]="data.number" placeholder="Numero" >
                     </div>
                     <div class="form-group col-md-6">
                         <label for="mybutton">&nbsp; &nbsp;</label>
-                        <button type="submit" class="btn btn-secondary" style="width: 100%;">Guardar</button>
+                        <button type="button" class="btn btn-secondary" (click)="updateContact()" style="width: 100%;">Guardar</button>
                     </div>
                 </div>
             </form>

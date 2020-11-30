@@ -34,8 +34,8 @@
                                         <td (click)="openMarker(marker.lat,marker.long)">{{marker.direccion}}</td>
                                         <td (click)="openMarker(marker.lat,marker.long)">{{marker.lat}}</td>
                                         <td (click)="openMarker(marker.lat,marker.long)">{{marker.long}}</td>
-                                        <td (click)="editMap(marker)"><mat-icon style="cursor:pointer" >edit</mat-icon></td>
-                                        <td (click)="delete(marker)"><mat-icon style="cursor:pointer" >delete</mat-icon></td>
+                                        <td (click)="editMap(marker)"><mat-icon style="cursor:pointer" *ngIf="!edit" >edit</mat-icon></td>
+                                        <td (click)="delete(marker)"><mat-icon style="cursor:pointer" *ngIf="!edit" >delete</mat-icon></td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -48,12 +48,16 @@
             
                 </div>
                 <div class="col-md-6 mt-3" style="padding: 0;">
+                    <div *ngIf="edit" class="row" style="justify-content: center;"><h4>{{objMarker.nombre}}</h4></div>
                     <div id="mapa">
                 
+                    </div>
+                    <div class="row" style="justify-content: center;">
+                        <button *ngIf="edit" (click)="saveMarker()" class="btn btn-secondary" style="width: 95%;">Guardar</button>
                     </div>        
                 </div>
                 <div class="col-md-3">
-                    <button *ngIf="edit" (click)="saveMarker()" class="btn btn-secondary">Guardar</button>
+                    
                 </div>
             </div>
         </div>
