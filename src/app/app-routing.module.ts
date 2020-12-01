@@ -11,23 +11,23 @@ import { InformationViolenceComponent } from './components/information-violence/
 import { LoginComponent } from './components/login/login.component';
 import { ProceduresComponent } from './components/procedures/procedures.component';
 
-
+import { AuthGuard } from './guards/auth.guard'
 const routes: Routes = [
   { path:'', redirectTo:'login', pathMatch:'full'},
   { path:'login', component:LoginComponent },
-  { path:'contacts',component:ContactsEmergencyComponent},
-  { path:'procedures',component:ProceduresComponent},
-  { path:'complaint',component:ComplaintComponent},
-  { path:'information',component:InformationViolenceComponent},
-  { path:'care-center',component:CaresCenterComponent},
-  { path:'care-center/add-marker/:id',component:AddMakerComponent},
-  { path:'denuncia-detail/:id',component:ComplaintDetailComponent},
+  { path:'contacts',component:ContactsEmergencyComponent,/*canActivate:[AuthGuard]*/},
+  { path:'procedures',component:ProceduresComponent,/*canActivate:[AuthGuard]*/},
+  { path:'complaint',component:ComplaintComponent,/*canActivate:[AuthGuard]*/},
+  { path:'information',component:InformationViolenceComponent,/*canActivate:[AuthGuard]*/},
+  { path:'care-center',component:CaresCenterComponent,/*canActivate:[AuthGuard]*/},
+  { path:'care-center/add-marker/:id',component:AddMakerComponent,/*canActivate:[AuthGuard]*/},
+  { path:'denuncia-detail/:id',component:ComplaintDetailComponent,/*canActivate:[AuthGuard]*/},
   { path:'home', component:HomeComponent, /*canActivate:[AuthGuard]*/},
-  { path:'**', component:LoginComponent, /*canActivate:[AuthGuard]*/}
+  { path:'**', component:LoginComponent}
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, { useHash: true })],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
