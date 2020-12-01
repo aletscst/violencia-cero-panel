@@ -37,8 +37,8 @@ export class LoginComponent implements OnInit {
       this.router.navigate(['contacts']);
       }
       else
-      alert("No se pudo iniciar sesion")
-    });
+      alert("No se pudo iniciar sesion");
+    }, error => alert("No se pudo iniciar sesion"));
   }
   openDialog(){
     this.dialog.open(RegisterDialog);

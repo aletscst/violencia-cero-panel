@@ -2,17 +2,18 @@
     <button *ngIf="router.url !== '/login'" class="btn btn-secondary" style="border-radius: 50px;" (click)="drawer.toggle()"
         mat-raised-button>&#9776;</button>
     <a class="navbar-brand ml-auto mr-auto" href="#">
-        <img src="../../../assets/GobiernoPueblos.svg" width="250px" height="80px" class="d-inline-block align-top"
+        <img src="assets/GobiernoPueblos.png" width="250px" height="80px" class="d-inline-block align-top"
             alt="" loading="lazy">
     </a>
 </nav>
 <mat-drawer-container class="example-container" autosize>
-    <mat-drawer #drawer class="example-sidenav" mode="side">
-        <p class="link-menu" [routerLink]="['/contacts']" routerLinkActive="active"><a><mat-icon style="font-size: 16px;font-weight: 900;float: left;padding: 5px;"> call</mat-icon>&nbsp;Contactos de Emergencia</a></p>
-        <p class="link-menu" [routerLink]="['/procedures']" routerLinkActive="active"><a><mat-icon style="font-size: 16px;font-weight: 900;float: left;padding: 5px;"> format_list_numbered</mat-icon>Procedimientos</a></p>
-        <p class="link-menu" [routerLink]="['/complaint']" routerLinkActive="active"><a><mat-icon style="font-size: 16px;font-weight: 900;float: left;padding: 5px;">store</mat-icon>Denuncia</a></p>
-        <p class="link-menu" [routerLink]="['/information']" routerLinkActive="active"><a><mat-icon style="font-size: 16px;font-weight: 400;float: left;padding: 5px;">info</mat-icon>&nbsp;Informacion sobre la violencia</a></p>
-        <p class="link-menu" [routerLink]="['/care-center']" routerLinkActive="active"><a><mat-icon style="font-size: 16px;font-weight: 900;float: left;padding: 5px;"> location_on</mat-icon>Centros de Atención</a></p>
+    <mat-drawer #drawer class="example-sidenav" mode="over">
+        <p (click)="drawer.close()" class="link-menu" [routerLink]="['/contacts']" routerLinkActive="active"><a><mat-icon style="font-size: 20px;font-weight: 900;float: left;"> call</mat-icon>&nbsp;Contactos de Emergencia</a></p>
+        <p (click)="drawer.close()" class="link-menu" [routerLink]="['/procedures']" routerLinkActive="active"><a><mat-icon style="font-size: 20px;font-weight: 900;float: left;"> format_list_numbered</mat-icon>Procedimientos</a></p>
+        <p (click)="drawer.close()" class="link-menu" [routerLink]="['/complaint']" routerLinkActive="active"><a><mat-icon style="font-size: 20px;font-weight: 900;float: left;">store</mat-icon>Denuncia</a></p>
+        <p (click)="drawer.close()" class="link-menu" [routerLink]="['/information']" routerLinkActive="active"><a><mat-icon style="font-size: 20px;font-weight: 400;float: left;">info</mat-icon>&nbsp;Informacion sobre la violencia</a></p>
+        <p (click)="drawer.close()" class="link-menu" [routerLink]="['/care-center']" routerLinkActive="active"><a><mat-icon style="font-size: 20px;font-weight: 900;float: left;"> location_on</mat-icon>Centros de Atención</a></p>
+        <p class="link-menu" [routerLink]="['/login']" (click)="logout(); drawer.close();"><a><mat-icon style="font-size: 20px;font-weight: 900;float: left;"> power_settings_new</mat-icon>Logout</a></p>
     </mat-drawer>
     <div class="example-sidenav-content" fxFlexFill>
         <router-outlet></router-outlet>
