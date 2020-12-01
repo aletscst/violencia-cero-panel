@@ -13,20 +13,56 @@ import { ComplaintsService } from 'src/app/services/complaints.service';
 export class ComplaintDetailComponent implements OnInit {
 
   public product_id: string;
-  public dataResp:respData;
+  public dataResp:respData={
+    denunciado:{
+      apellidoMaterno:'',
+      apellidoPaterno:'',
+      codigoPostal:'',
+      domicilio:'',
+      edad:0,
+      id:0,
+      idDenuncia:0,
+      nombres:'',
+      ocupacion:'',
+      parentesco:'',
+      tipoViolencia:''
+    },
+    descripcionProblema:'',
+    estatus:'',
+    fechaSolicitud:'',
+    id:0,
+    idUsusario:0,
+    tipoAyuda:'',
+    solicitante:{
+      apellidoMaterno:'',
+      apellidoPaterno:'',
+      codigoPostal:'',
+      domicilio:'',
+      edad:0,
+      edoCivil:'',
+      escolaridad:'',
+      genero:'',
+      id:0,
+      idDenuncia:0,
+      lugarNacimiento:'',
+      nombres:'',
+      ocupacion:'',
+      telefono:''
+    }
+  };
   public load:boolean=false;
 
   constructor(private actRoute: ActivatedRoute,private serviceDenuncia:ComplaintsService) {
     this.product_id = this.actRoute.snapshot.params.id;
-    console.log(this.product_id)
+    //console.log(this.product_id)
    }
 
   ngOnInit(): void {
     this.serviceDenuncia.getCompaintID(Number(this.product_id)).subscribe(resp=>{
       this.dataResp = resp;
-      console.log(this.dataResp);
-      console.log(this.dataResp.denunciado.nombres);
-      console.log(resp);
+      //console.log(this.dataResp);
+      //console.log(this.dataResp.denunciado.nombres);
+      //console.log(resp);
       setTimeout(()=>{                           //<<<---using ()=> syntax
         this.load = true;
    }, 3000);
@@ -38,9 +74,9 @@ export class ComplaintDetailComponent implements OnInit {
     const DATA = document.getElementById('htmlData');
     const DATA2 = document.getElementById('htmlData2');
     const DATA3 = document.getElementById('htmlData3');
-    console.log(DATA)
-    console.log(DATA2)
-    console.log(DATA3)
+    //console.log(DATA)
+    //console.log(DATA2)
+    //console.log(DATA3)
 
     const doc = new jsPDF('p', 'pt', 'a4');
     const options = {

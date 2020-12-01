@@ -11,7 +11,7 @@ import { Login, Register, respLogin, respRegister } from '../models/login-model'
 export class LoginService {
 
   //private url = 'http://localhost:3000/admin/';
-  private url = 'http://201.116.12.210:3000/admin';
+  private url = 'http://201.116.12.210:3000/admin/';
   constructor(private _http:HttpClient,private jwtHelper: JwtHelperService) { }
 
   auth(obj:Login):Observable<respLogin>{

@@ -50,8 +50,8 @@ export class InformationViolenceComponent implements OnInit {
   loadProcedure(){
     this.serviceViolence.getListViolence().subscribe(resp=>{
       this.dataViolence = resp.data;
-      console.log("Violencia:",this.dataViolence)
-      console.log(resp)
+      //console.log("Violencia:",this.dataViolence)
+      //console.log(resp)
     });
   }
 
@@ -80,7 +80,7 @@ export class InformationViolenceComponent implements OnInit {
   }
 
   addParrafo(value:any){
-    console.log(this.frmEditProcedure.valid);
+    //console.log(this.frmEditProcedure.valid);
     let a = this.frmEditProcedure.get('formArrayName') as FormArray;
     //this.parrafos[] this.frmEditProcedure.value;
     this.parrafos.forEach(element => {
@@ -93,13 +93,13 @@ export class InformationViolenceComponent implements OnInit {
       texto:''
     }
     this.parrafos.push(addParrafo);
-    console.log(this.parrafos)
+    //console.log(this.parrafos)
     this.buildForm();
     this.emptyParrafo = true;
   }
 
   SaveProcedure(){
-    console.log(this.titleProcedure)
+    //console.log(this.titleProcedure)
     let a = this.frmEditProcedure.get('formArrayName') as FormArray;
     this.parrafos.forEach(element => {
       element.subtitulo = a.at(0).value.regSubtitle;
@@ -107,7 +107,7 @@ export class InformationViolenceComponent implements OnInit {
     });
     this.sendJson.titulo = this.titleProcedure;
     this.sendJson.parrafos = this.parrafos;
-    console.log(this.sendJson)
+    //console.log(this.sendJson)
     this.serviceViolence.addViolence(this.sendJson).subscribe(resp=>{
         if(resp.status)
         this.loadProcedure();
@@ -124,7 +124,7 @@ export class InformationViolenceComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
+      //console.log('The dialog was closed');
     });
   }
 
@@ -181,8 +181,8 @@ export class InformationViolence implements OnInit{
       this.parrafos = resp.parrafos;
       this.titleProcedure = this.parrafoObj.titulo;
       //console.log(this.parrafoObj)
-      console.log(this.parrafos)
-      console.log(this.parrafoObj.titulo)
+      //console.log(this.parrafos)
+      //console.log(this.parrafoObj.titulo)
       this.buildForm();
     });
 
@@ -195,7 +195,7 @@ export class InformationViolence implements OnInit{
   }
 
   buildForm(){
-    console.log(this.parrafos)
+    //console.log(this.parrafos)
     const controlArray = this.frmEditProcedure.get('formArrayName') as FormArray;
     controlArray.clear();
     Object.keys(this.parrafos).forEach((i) => {
@@ -210,7 +210,7 @@ export class InformationViolence implements OnInit{
   }
 
   onSubmit(){
-    console.log(this.parrafoObj.id)
+    //console.log(this.parrafoObj.id)
     let a = this.frmEditProcedure.get('formArrayName') as FormArray;
     for(let i=0;i<a.length;i++){
       this.parrafos[i].subtitulo = this.frmEditProcedure.value.formArrayName[i].EditSubtitle;
@@ -220,7 +220,7 @@ export class InformationViolence implements OnInit{
     this.sendJsonID.id = this.parrafoObj.id;
     this.sendJsonID.titulo = this.titleProcedure;
     this.sendJsonID.parrafos = this.parrafos;
-    console.log(this.sendJsonID);
+    //console.log(this.sendJsonID);
     this.serviceViolence.updateViolence(this.parrafoObj.id,this.sendJsonID).subscribe(resp=>{
       if(resp.status)
       console.log("se ha actualizado")
@@ -245,8 +245,8 @@ export class InformationViolence implements OnInit{
       subtitulo:'Subtitulo Anadido',
       texto:'Texto anadido'
     }
-    console.log(this.parrafos)
-    console.log(this.frmEditProcedure)
+    //console.log(this.parrafos)
+    //console.log(this.frmEditProcedure)
     this.parrafos.push(parrafo);
     //this.parrafos.push(parrafo);
     //console.log(this.parrafoObj);

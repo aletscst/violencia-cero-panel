@@ -72,6 +72,11 @@ export function jwtTokenGetter(){
     })
   ],
   providers: [{provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true }],
-  bootstrap: [AppComponent]
+  entryComponents: [
+    ContactEditDialog,
+    ProceduresDialog,
+    InformationViolence
+ ],
+  bootstrap: [AppComponent],
 })
 export class AppModule { }

@@ -21,6 +21,12 @@ export class ComplaintComponent implements OnInit {
     dateIni:'',
     status:''
   };
+
+  public statusNuevos:number=0;
+  public statusCompletados:number=0;
+  public statusCancelados:number=0;
+  public statusProceso:number=0;
+
   public statusComplaint:String[]=[
     "NUEVO",
     "COMPLETADO",
@@ -36,32 +42,53 @@ export class ComplaintComponent implements OnInit {
   ngOnInit(): void {
     this.serviceComplaint.getComplaints().subscribe(resp=>{
       this.dataComplaints = resp.data;
-      console.log(resp)
+      //console.log(resp)
       this.dataComplaints.forEach(element => {
         this.statusData.push(element.estatus);
       });
-      console.log(this.dataComplaints)
+      this.sumaEstatus(this.dataComplaints);
+      //console.log(this.dataComplaints)
       //console.log(this.statusData)
-    })
+    });
+  }
+
+  sumaEstatus(obj:Denuncia[]){
+    obj.forEach(element => {
+      if(element.estatus === 'NUEVO')
+      this.statusNuevos = this.statusNuevos + 1 ;
+      if(element.estatus === 'COMPLETADO')
+      this.statusCompletados = this.statusCompletados + 1 ;
+      if(element.estatus === 'CANCELADO')
+      this.statusCancelados = this.statusCancelados + 1 ;
+      if(element.estatus === 'PROCESO')
+      this.statusProceso = this.statusProceso + 1 ;
+    });
   }
 
   searchComplaint(){
     this.sendJsonSearch.status = this.statusSearch;
     this.sendJsonSearch.dateIni = this.dateIni;
     this.sendJsonSearch.dateFin = this.dateFin;
-    console.log(this.sendJsonSearch);
+    //console.log(this.sendJsonSearch);
     this.serviceComplaint.searchComplaints(this.sendJsonSearch).subscribe(resp=>{
-      this.dataComplaints = resp[0].data;
+      this.dataComplaints = resp.data;
+      //console.log(resp)
     });
 
   }
-  editStatus(statu:string){
-    console.log(statu);
+  editStatus(statu:Denuncia){
+    //console.log(statu);
+    this.serviceComplaint.editComplaint(Number(statu.id),statu).subscribe(resp=>{
+      if(resp.status)
+      console.log("Se actualizo correctamente")
+      else
+      alert("No se pudo actualizar correctamente")
+    })
     alert("Se Actualizo correctamente")
   }
 
   openComplaintDetail(obj): void {
-    console.log(obj);
+    //console.log(obj);
     //let id = obj.id;
     //console.log(this.router.navigate(['/denuncia-detail/',{obj} ]));
     this.router.navigate(['denuncia-detail/'+obj]);

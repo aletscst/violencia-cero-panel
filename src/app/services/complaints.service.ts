@@ -32,7 +32,7 @@ export class ComplaintsService {
   }
   searchComplaints(obj:searchComplaint):Observable<denunciaObj>{
     const headers = new HttpHeaders({'Authorization':'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c3VhcmlvIjoiYmV0b3ZjIiwiaWQiOjEsImlhdCI6MTYwNjc4ODE5NiwiZXhwIjoxNjA2ODc0NTk2fQ.D8qAunUCVHW1yHArZuaUP3lx9o0FYJRE_gbr7cyBT40'});
-    return this._http.post<denunciaObj>(this.url,obj,{headers:headers});
+    return this._http.post<denunciaObj>(this.url+'history/',obj,{headers:headers});
   }
   
 }

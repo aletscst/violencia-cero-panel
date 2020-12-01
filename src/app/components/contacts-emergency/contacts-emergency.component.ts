@@ -45,11 +45,11 @@ export class ContactsEmergencyComponent implements OnInit {
   editContact(id: Contacts) {
     this.isEdit = true;
     //console.log(id);
-    this.openDialog(id)
+    this.openDialog(id);
   }
   deleteContact(id: number) {
     this.serviceContacts.deleteContact(id).subscribe(resp=>{
-      console.log(resp)
+      //console.log(resp)
       if(resp.status)
       this.loadContacts();
       else alert("No se pudo eliminar")
@@ -62,18 +62,18 @@ export class ContactsEmergencyComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
+      //console.log('The dialog was closed');
     });
   }
   SaveContact(value) {
-    console.log(value)
+    //console.log(value)
     let jsonSend:ContactsSend={
       description: value.regDesc,
       name: value.regName,
       number: value.regNum
     }
     this.serviceContacts.addContactos(jsonSend).subscribe(resp=>{
-      console.log(resp);
+      //console.log(resp);
       if(resp.status)
       this.loadContacts();
       else
@@ -100,7 +100,7 @@ export class ContactEditDialog implements OnInit {
 
   ngOnInit(): void {
     //this.serviceContacts.updateContacto()
-    console.log(this.data)
+    //console.log(this.data)
     this.id = this.data.id;
   }
 

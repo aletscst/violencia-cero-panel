@@ -5,10 +5,10 @@
             <div class="col-md-2">
                 <label for="exampleFormControlSelect1">Estatus</label>
                 <select class="form-control" id="exampleFormControlSelect1" [(ngModel)]="statusSearch">
-                    <option value="Nuevos">Nuevos</option>
-                    <option value="Completados">Completados</option>
-                    <option value="Cancelado">Cancelado</option>
-                    <option value="Proceso">Proceso</option>
+                    <option value="NUEVO">NUEVO</option>
+                    <option value="COMPLETADO">COMPLETADO</option>
+                    <option value="CANCELADO">CANCELADO</option>
+                    <option value="PROCESO">PROCESO</option>
                 </select>
             </div>
             <div class="col-md-2">
@@ -31,25 +31,25 @@
             <div class="col-md-3">
                 <div class="card-body"
                     style="border: 2px solid #0C21F4;border-radius: 10px; text-align: center;font-size: 18px;">
-                    Total Nuevos: 17
+                    Total Nuevos: {{statusNuevos}}
                 </div>
             </div>
             <div class="col-md-3">
                 <div class="card-body"
                     style="border: 2px solid #08AC00;border-radius: 10px;text-align: center;font-size: 18px;">
-                    Total Completados: 48
+                    Total Completados: {{statusCompletados}}
                 </div>
             </div>
             <div class="col-md-3">
                 <div class="card-body"
                     style="border: 2px solid #EE0000;border-radius: 10px;text-align: center;font-size: 18px;">
-                    Total Cancelado: 150
+                    Total Cancelado: {{statusCancelados}}
                 </div>
             </div>
             <div class="col-md-3">
                 <div class="card-body"
                     style="border: 2px solid #777777;border-radius: 10px;text-align: center;font-size: 18px;">
-                    Total Proceso: 100
+                    Total Proceso: {{statusProceso}}
                 </div>
             </div>
         </div>
@@ -86,7 +86,7 @@
                         </select>
                     </div>
                     <div class="col-md-1 col-sm-1" style="text-align: center;">
-                        <mat-icon style="cursor:pointer" (click)="editStatus(complaint.estatus)">save</mat-icon>
+                        <mat-icon style="cursor:pointer" (click)="editStatus(complaint)">save</mat-icon>
                     </div>
                 </div>
             </li>
