@@ -53,6 +53,10 @@ export class ComplaintComponent implements OnInit {
   }
 
   sumaEstatus(obj:Denuncia[]){
+    this.statusNuevos = 0;
+    this.statusCompletados = 0;
+    this.statusCancelados = 0;
+    this.statusProceso = 0;
     obj.forEach(element => {
       if(element.estatus === 'NUEVO')
       this.statusNuevos = this.statusNuevos + 1 ;
@@ -72,6 +76,7 @@ export class ComplaintComponent implements OnInit {
     //console.log(this.sendJsonSearch);
     this.serviceComplaint.searchComplaints(this.sendJsonSearch).subscribe(resp=>{
       this.dataComplaints = resp.data;
+      this.sumaEstatus(this.dataComplaints);
       //console.log(resp)
     });
 

@@ -26,8 +26,8 @@ import { AddMakerComponent } from './components/cares-center/add-maker/add-maker
 import { ComplaintDetailComponent } from './components/complaint-detail/complaint-detail.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { respLogin } from './models/login-model';
-import { JwtInterceptor, JwtModule } from '@auth0/angular-jwt';
-
+import { JwtModule } from '@auth0/angular-jwt';
+import { JwtInterceptor } from './components/interceptor/token-interceptor'
 export function jwtTokenGetter(){
   const user:respLogin = JSON.parse(localStorage.getItem('user'));
   return  user.token;

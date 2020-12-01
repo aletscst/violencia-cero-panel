@@ -13,6 +13,7 @@
         <p class="link-menu" [routerLink]="['/complaint']" routerLinkActive="active"><a><mat-icon style="font-size: 16px;font-weight: 900;float: left;padding: 5px;">store</mat-icon>Denuncia</a></p>
         <p class="link-menu" [routerLink]="['/information']" routerLinkActive="active"><a><mat-icon style="font-size: 16px;font-weight: 400;float: left;padding: 5px;">info</mat-icon>&nbsp;Informacion sobre la violencia</a></p>
         <p class="link-menu" [routerLink]="['/care-center']" routerLinkActive="active"><a><mat-icon style="font-size: 16px;font-weight: 900;float: left;padding: 5px;"> location_on</mat-icon>Centros de Atención</a></p>
+        <p class="link-menu" (click)="cerrarSesion()" routerLinkActive="active"><a><mat-icon style="font-size: 16px;font-weight: 900;float: left;padding: 5px;">power_settings_new</mat-icon>Cerrar Sesión</a></p>
     </mat-drawer>
     <div class="example-sidenav-content" fxFlexFill>
         <router-outlet></router-outlet>

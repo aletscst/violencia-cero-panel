@@ -20,19 +20,19 @@ export class ComplaintsService {
     const headers = new HttpHeaders({'Authorization':'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c3VhcmlvIjoiYmV0b3ZjIiwiaWQiOjEsImlhdCI6MTYwNjc4ODE5NiwiZXhwIjoxNjA2ODc0NTk2fQ.D8qAunUCVHW1yHArZuaUP3lx9o0FYJRE_gbr7cyBT40'});
     //return of(DATACOMPLAINS);
     //headers.set('Authorization', 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c3VhcmlvIjoiYmV0b3ZjIiwiaWQiOjEsImlhdCI6MTYwNjc4ODE5NiwiZXhwIjoxNjA2ODc0NTk2fQ.D8qAunUCVHW1yHArZuaUP3lx9o0FYJRE_gbr7cyBT40');
-    return this._http.get<denunciaObj>(this.url,{headers:headers});
+    return this._http.get<denunciaObj>(this.url);
   }
   getCompaintID(id:number):Observable<respData>{
     const headers = new HttpHeaders({'Authorization':'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c3VhcmlvIjoiYmV0b3ZjIiwiaWQiOjEsImlhdCI6MTYwNjc4ODE5NiwiZXhwIjoxNjA2ODc0NTk2fQ.D8qAunUCVHW1yHArZuaUP3lx9o0FYJRE_gbr7cyBT40'});
-    return this._http.get<respData>(this.url+id,{headers:headers});
+    return this._http.get<respData>(this.url+id);
   }
   editComplaint(id:number,obj:Denuncia):Observable<respStatus>{
     const headers = new HttpHeaders({'Authorization':'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c3VhcmlvIjoiYmV0b3ZjIiwiaWQiOjEsImlhdCI6MTYwNjc4ODE5NiwiZXhwIjoxNjA2ODc0NTk2fQ.D8qAunUCVHW1yHArZuaUP3lx9o0FYJRE_gbr7cyBT40'});
-    return this._http.put<respStatus>(this.url+id,obj,{headers:headers})
+    return this._http.put<respStatus>(this.url+id,obj)
   }
   searchComplaints(obj:searchComplaint):Observable<denunciaObj>{
     const headers = new HttpHeaders({'Authorization':'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c3VhcmlvIjoiYmV0b3ZjIiwiaWQiOjEsImlhdCI6MTYwNjc4ODE5NiwiZXhwIjoxNjA2ODc0NTk2fQ.D8qAunUCVHW1yHArZuaUP3lx9o0FYJRE_gbr7cyBT40'});
-    return this._http.post<denunciaObj>(this.url+'history/',obj,{headers:headers});
+    return this._http.post<denunciaObj>(this.url+'history/',obj);
   }
   
 }
