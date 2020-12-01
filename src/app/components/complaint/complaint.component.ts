@@ -72,8 +72,7 @@ export class ComplaintComponent implements OnInit {
     //console.log(this.sendJsonSearch);
     this.serviceComplaint.searchComplaints(this.sendJsonSearch).subscribe(resp=>{
       this.dataComplaints = resp.data;
-      //console.log(resp)
-    });
+    }, error => alert('No se encontraron resultados'));
 
   }
   editStatus(statu:Denuncia){

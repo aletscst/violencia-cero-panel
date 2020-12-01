@@ -15,14 +15,14 @@ import { AuthGuard } from './guards/auth.guard'
 const routes: Routes = [
   { path:'', redirectTo:'login', pathMatch:'full'},
   { path:'login', component:LoginComponent },
-  { path:'contacts',component:ContactsEmergencyComponent,/*canActivate:[AuthGuard]*/},
-  { path:'procedures',component:ProceduresComponent,/*canActivate:[AuthGuard]*/},
-  { path:'complaint',component:ComplaintComponent,/*canActivate:[AuthGuard]*/},
-  { path:'information',component:InformationViolenceComponent,/*canActivate:[AuthGuard]*/},
-  { path:'care-center',component:CaresCenterComponent,/*canActivate:[AuthGuard]*/},
-  { path:'care-center/add-marker/:id',component:AddMakerComponent,/*canActivate:[AuthGuard]*/},
-  { path:'denuncia-detail/:id',component:ComplaintDetailComponent,/*canActivate:[AuthGuard]*/},
-  { path:'home', component:HomeComponent, /*canActivate:[AuthGuard]*/},
+  { path:'contacts',component:ContactsEmergencyComponent,canActivate:[AuthGuard]},
+  { path:'procedures',component:ProceduresComponent,canActivate:[AuthGuard]},
+  { path:'complaint',component:ComplaintComponent,canActivate:[AuthGuard]},
+  { path:'information',component:InformationViolenceComponent,canActivate:[AuthGuard]},
+  { path:'care-center',component:CaresCenterComponent,canActivate:[AuthGuard]},
+  { path:'care-center/add-marker/:id',component:AddMakerComponent,canActivate:[AuthGuard]},
+  { path:'denuncia-detail/:id',component:ComplaintDetailComponent,canActivate:[AuthGuard]},
+  { path:'home', component:HomeComponent, canActivate:[AuthGuard]},
   { path:'**', component:LoginComponent}
 ];
 

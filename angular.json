@@ -130,5 +130,8 @@
       }
     }
   },
-  "defaultProject": "app-milpa-alta"
+  "defaultProject": "app-milpa-alta",
+  "cli": {
+    "analytics": false
+  }
 }
