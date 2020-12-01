@@ -8,7 +8,8 @@ import { addMarker, MarkersList, markersMap, respStatus } from '../models/cares-
 })
 export class CaresCenterService {
 
-  private url = 'http://localhost:3000/centros/';
+  //private url = 'http://localhost:3000/centros/';
+  private url = 'http://201.116.12.210:3000/centros';
 
   constructor(private http:HttpClient) { }
 

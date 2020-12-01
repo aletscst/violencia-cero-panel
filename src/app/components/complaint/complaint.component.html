@@ -78,9 +78,9 @@
                         <!--a class="badge" [ngClass]="{'badge-success': complaint.status == 'Completado','badge-secondary': complaint.status == 'Verificando','badge-danger': complaint.status == 'Denegado','badge-info': complaint.status == 'Proceso'}" style="float: right;font-weight: 400; width: 75px;">
                             {{complaint.status}}</a-->
                         <select name="select" [(ngModel)]="complaint.estatus"
-                            [ngClass]="{'new': complaint.estatus === 'Nuevo','process':complaint.estatus === 'Proceso','canceled':complaint.estatus === 'Cancelado','complete':complaint.estatus === 'Completado'}">
+                            [ngClass]="{'new': complaint.estatus === 'NUEVO','process':complaint.estatus === 'PROCESO','canceled':complaint.estatus === 'CANCELADO','complete':complaint.estatus === 'COMPLETADO'}">
                             <option [ngValue]="status" *ngFor="let status of statusComplaint"
-                                [ngClass]="{'new': status === 'Nuevo','process':status === 'Proceso','canceled':status === 'Cancelado','complete':status === 'Completado'}">
+                                [ngClass]="{'new': status === 'NUEVO','process':status === 'PROCESO','canceled':status === 'CANCELADO','complete':status === 'COMPLETADO'}">
                                 {{status}}</option>
                             <!--option value="{{complaint.status}}" selected>{{complaint.status}}</option-->
                         </select>

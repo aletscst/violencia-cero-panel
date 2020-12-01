@@ -22,10 +22,10 @@ export class ComplaintComponent implements OnInit {
     status:''
   };
   public statusComplaint:String[]=[
-    "Nuevo",
-    "Completado",
-    "Cancelado",
-    "Proceso"
+    "NUEVO",
+    "COMPLETADO",
+    "CANCELADO",
+    "PROCESO"
   ];
   public statusSearch:String;
   public dateIni:String='';
@@ -35,7 +35,7 @@ export class ComplaintComponent implements OnInit {
 
   ngOnInit(): void {
     this.serviceComplaint.getComplaints().subscribe(resp=>{
-      this.dataComplaints = resp[0].data;
+      this.dataComplaints = resp.data;
       console.log(resp)
       this.dataComplaints.forEach(element => {
         this.statusData.push(element.estatus);

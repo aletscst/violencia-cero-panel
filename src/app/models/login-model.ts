@@ -5,7 +5,7 @@ export interface Login{
 export interface respLogin{
     status:boolean,
     id:number;
-    token:String;
+    token:string;
 }
 export interface Register{
     nombre:String;

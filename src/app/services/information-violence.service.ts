@@ -8,7 +8,8 @@ import { Observable, of } from 'rxjs';
 })
 export class InformationViolenceService {
 
-  private url = 'http://localhost:3000/informacion/';
+  //private url = 'http://localhost:3000/informacion/';
+  private url = 'http://201.116.12.210:3000/informacion';
 
   constructor(private _http:HttpClient) { }
   getListViolence():Observable<getObjViolence>{

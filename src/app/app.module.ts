@@ -24,8 +24,14 @@ import { InformationViolenceComponent, InformationViolence } from './components/
 import { CaresCenterComponent } from './components/cares-center/cares-center.component';
 import { AddMakerComponent } from './components/cares-center/add-maker/add-maker.component';
 import { ComplaintDetailComponent } from './components/complaint-detail/complaint-detail.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { respLogin } from './models/login-model';
+import { JwtInterceptor, JwtModule } from '@auth0/angular-jwt';
 
+export function jwtTokenGetter(){
+  const user:respLogin = JSON.parse(localStorage.getItem('user'));
+  return  user.token;
+}
 
 
 @NgModule({
@@ -57,9 +63,15 @@ import { HttpClientModule } from '@angular/common/http';
     ReactiveFormsModule,
     RouterModule,
     MatDialogModule,
-    HttpClientModule
+    HttpClientModule,
+
+    JwtModule.forRoot({
+      config: {
+        tokenGetter: jwtTokenGetter
+      }
+    })
   ],
-  providers: [],
+  providers: [{provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -6,37 +6,39 @@
                 <div class="mycardbody">
                     <!--h5 class="card-title" style="text-align: center;">Milpa Alta</h5-->
                 </div>
-                <ul class="list-group list-group-flush">
-                    <li class="listas">
-                        <label class="sr-only" for="inlineFormInputGroup">Usuario: </label>
-                        <div class="input-group">
-                            <div class="input-group-prepend">
-                                <div class="input-group-text"><img src="../../../assets/usuario.png" width="16px"
-                                        height="16px" alt="usuarioimg"></div>
+                <form [formGroup]="frmLogin" (ngSubmit)="onSubmit()">
+                    <ul class="list-group list-group-flush">
+                        <li class="listas">
+                            <label class="sr-only" for="inlineFormInputGroup">Usuario: </label>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text"><img src="../../../assets/usuario.png" width="16px"
+                                            height="16px" alt="usuarioimg"></div>
+                                </div>
+                                <input type="text" class="form-control" formControlName="email" id="inlineFormInputGroup" placeholder="Usuario">
                             </div>
-                            <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="Usuario">
-                        </div>
-                    </li>
-                    <li class="listas">
-                        <label class="sr-only" for="inlineFormInputGroup2">Contraseña: </label>
-                        <div class="input-group">
-                            <div class="input-group-prepend">
-                                <div class="input-group-text"><img src="../../../assets/llave.png" width="16px"
-                                        height="16px" alt="passwordimg"></div>
+                        </li>
+                        <li class="listas">
+                            <label class="sr-only" for="inlineFormInputGroup2">Contraseña: </label>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text"><img src="../../../assets/llave.png" width="16px"
+                                            height="16px" alt="passwordimg"></div>
+                                </div>
+                                <input type="password" class="form-control" formControlName="password" id="inlineFormInputGroup2" placeholder="Contraseña">
                             </div>
-                            <input type="password" class="form-control" id="inlineFormInputGroup2" placeholder="Contraseña">
-                        </div>
-                    </li>
-                    <li class="listas">
-                        <div class="input-group">
-                            <button class="btn btn-secondary" style="width: 100%;"> Ingresar </button>
-                        </div>
-                    </li>   
-                </ul>
+                        </li>
+                        <li class="listas">
+                            <div class="input-group">
+                                <button type="submit" class="btn btn-secondary" style="width: 100%;"> Ingresar </button>
+                            </div>
+                        </li>   
+                    </ul>
+                </form>
                 <div class="card-body" style="padding: 0;">
                     <ul class="list-group list-group-flush" style="flex-direction: initial;">
-                        <li class="listas"><a class="linkref" href="#" style="font-size: 12px;">Olvidtaste tu contraseña?</a></li>
-                        <li class="listas"><a class="linkref" href="#" style="font-size: 12px;">Registrate</a></li>
+                        <!--li class="listas"><a class="linkref" href="#" style="font-size: 12px;">Olvidtaste tu contraseña?</a></li>
+                        <li class="listas" style="cursor: pointer;"><a class="linkref" style="font-size: 12px;" (click)="openDialog()">Registrate</a></li-->
                     </ul>
                 </div>
             </div>

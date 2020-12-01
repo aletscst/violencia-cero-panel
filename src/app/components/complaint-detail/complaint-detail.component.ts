@@ -14,6 +14,7 @@ export class ComplaintDetailComponent implements OnInit {
 
   public product_id: string;
   public dataResp:respData;
+  public load:boolean=false;
 
   constructor(private actRoute: ActivatedRoute,private serviceDenuncia:ComplaintsService) {
     this.product_id = this.actRoute.snapshot.params.id;
@@ -24,7 +25,11 @@ export class ComplaintDetailComponent implements OnInit {
     this.serviceDenuncia.getCompaintID(Number(this.product_id)).subscribe(resp=>{
       this.dataResp = resp;
       console.log(this.dataResp);
-      console.log(this.dataResp.solicitante.nombres);
+      console.log(this.dataResp.denunciado.nombres);
+      console.log(resp);
+      setTimeout(()=>{                           //<<<---using ()=> syntax
+        this.load = true;
+   }, 3000);
     });
   }
 

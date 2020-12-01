@@ -1,0 +1,26 @@
+<div class="container" style="width: 300px;">
+    <div class="row mb-2">
+        <img id="logo" src="../../../assets/GobiernoPueblos.svg" class="card-img-top mt-4" alt="...">
+    </div>
+    <form class="mt-3" [formGroup]="frmRegister" >
+        <div class="form-group">
+            <label for="InputName">Nombre:</label>
+            <input type="text" class="form-control" formControlName="username" id="InputName" aria-describedby="emailHelp" required>
+            <!--small id="nameHelp" class="form-text text-muted">We'll never share your email with anyone else.</small-->
+        </div>
+        <div class="form-group">
+            <label for="InputLastName">Apellido:</label>
+            <input type="text" class="form-control" formControlName="lastname" id="InputLastName" required>
+        </div>
+        <div class="form-group">
+            <label for="InputEmail">Email:</label>
+            <input type="text" class="form-control" formControlName="email" id="InputEmail" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required>
+        </div>
+        <div class="form-group">
+            <label for="InputPassword">Contraseña:</label>
+            <input type="password" class="form-control" formControlName="password" id="InputPassword" pattern=".{6,}" aria-describedby="passHelp"  required>
+            <small id="passHelp" class="form-text text-muted">La contraseña debe contener almenos 6 caracteres</small>
+        </div>
+        <button type="submit" class="btn btn-secondary" [disabled]="!frmRegister.valid" (click)="onSubmit()" style="width: 100%;">Registrar</button>
+    </form>
+</div>
