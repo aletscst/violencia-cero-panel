@@ -11,6 +11,7 @@ export interface MarkersList{
     data:markersMap[];
 }
 export interface addMarker{
+    id:number;
     nombre:String;
     descripcion:String;
     direccion:String;

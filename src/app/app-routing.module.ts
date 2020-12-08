@@ -13,7 +13,7 @@ import { ProceduresComponent } from './components/procedures/procedures.componen
 
 import { AuthGuard } from './guards/auth.guard'
 const routes: Routes = [
-  { path:'', redirectTo:'login', pathMatch:'full'},
+  { path:'', redirectTo:'complaint', pathMatch:'full'},
   { path:'login', component:LoginComponent },
   { path:'contacts',component:ContactsEmergencyComponent,canActivate:[AuthGuard]},
   { path:'procedures',component:ProceduresComponent,canActivate:[AuthGuard]},

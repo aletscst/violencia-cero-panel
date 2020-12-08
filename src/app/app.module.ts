@@ -15,6 +15,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
 import { MatIconModule } from '@angular/material/icon';
 import { MatDialogModule } from '@angular/material/dialog';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 /*  */
 import { ContactsEmergencyComponent, ContactEditDialog } from './components/contacts-emergency/contacts-emergency.component';
@@ -28,6 +29,8 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { respLogin } from './models/login-model';
 import { JwtModule } from '@auth0/angular-jwt';
 import { JwtInterceptor } from './components/interceptor/token-interceptor';
+
+import {GoogleMapsModule} from '@angular/google-maps'; 
 
 export function jwtTokenGetter(){
   const user:respLogin = JSON.parse(localStorage.getItem('user'));
@@ -64,6 +67,8 @@ export function jwtTokenGetter(){
     ReactiveFormsModule,
     RouterModule,
     MatDialogModule,
+    MatProgressSpinnerModule,
+    GoogleMapsModule,
     HttpClientModule,
 
     JwtModule.forRoot({

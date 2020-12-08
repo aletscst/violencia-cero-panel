@@ -34,7 +34,7 @@ export class LoginComponent implements OnInit {
       if(resp.status){
       console.log("Inicio sesion",resp.token);
       localStorage.setItem('user',JSON.stringify(resp));
-      this.router.navigate(['contacts']);
+      this.router.navigate(['complaint']);
       }
       else
       alert("No se pudo iniciar sesion");

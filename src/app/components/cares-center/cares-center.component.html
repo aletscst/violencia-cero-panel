@@ -1,21 +1,50 @@
 <div class="container">
     <div class="row">
         <div class="accordion" id="accordionMakersList" style="width: 100%;">
+            <div class="row mb-4">
+                <div class="accordion" id="accordionMakersListEdit" style="width: 100%;">
+                    <div class="card mt-3">
+                        <div class="card-header" id="headingOne">
+                            <h2 class="mb-0 ml-auto mr-auto">
+                                <button id="MakersListEdit" class="btn btn-link btn-block" type="button"
+                                    data-toggle="collapse" data-target="#collapseEdit" aria-expanded="false"
+                                    aria-controls="collapseEdit" style="color: #6c757d;">
+                                    Agregar Dirección
+                                </button>
+                            </h2>
+                        </div>
+
+                        <div id="collapseEdit" class="collapse" aria-labelledby="headingOne"
+                            data-parent="#accordionMakersListEdit">
+                            <app-add-maker></app-add-maker>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <div class="card mt-3">
                 <div class="card-header" id="headingOne">
                     <h2 class="mb-0 ml-auto mr-auto">
                         <button id="MakersList" class="btn btn-link btn-block" type="button" data-toggle="collapse"
-                            data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne" style="color: #6c757d;" (click)="statusMap()">
-                            Lista de Marcadores
+                            data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne"
+                            style="color: #6c757d;">
+                            Lista de Direcciones
                         </button>
                     </h2>
+                </div>
+                <div style="padding-top: 30px;">
+                    <button type="button" class="btn btn-secondary" style="width: 30%;"
+                        (click)="loadMarkers()">Recargar</button>
                 </div>
 
                 <div id="collapseOne" class="collapse show" aria-labelledby="headingOne"
                     data-parent="#accordionMakersList">
                     <div class="card-body">
                         <form>
-                            <table class="table table-responsive">
+                            <div *ngIf="makersList.length == 0"
+                                style=" padding-top: 50px; padding-bottom: 50px; width: 100%;">
+                                <mat-spinner [diameter]="80" style="margin:0 auto;"></mat-spinner>
+                            </div>
+                            <table *ngIf="makersList.length > 0" class="table table-responsive">
                                 <thead class="thead-dark">
                                     <tr>
                                         <th scope="col">Nombre</th>
@@ -28,14 +57,19 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr id="section-row" *ngFor="let marker of makersList;let i = index;"  style="cursor: pointer;">
-                                        <td (click)="openMarker(marker.lat,marker.long)">{{marker.nombre}}</td>
-                                        <td (click)="openMarker(marker.lat,marker.long)">{{marker.descripcion}}</td>
-                                        <td (click)="openMarker(marker.lat,marker.long)">{{marker.direccion}}</td>
-                                        <td (click)="openMarker(marker.lat,marker.long)">{{marker.lat}}</td>
-                                        <td (click)="openMarker(marker.lat,marker.long)">{{marker.long}}</td>
-                                        <td (click)="editMap(marker)"><mat-icon style="cursor:pointer" *ngIf="!edit" >edit</mat-icon></td>
-                                        <td (click)="delete(marker)"><mat-icon style="cursor:pointer" *ngIf="!edit" >delete</mat-icon></td>
+                                    <tr id="section-row" *ngFor="let marker of makersList;let i = index;"
+                                        style="cursor: pointer;">
+                                        <td (click)="showMark(marker)">{{marker.nombre}}</td>
+                                        <td (click)="showMark(marker)">{{marker.descripcion}}</td>
+                                        <td (click)="showMark(marker)">{{marker.direccion}}</td>
+                                        <td (click)="showMark(marker)">{{marker.lat}}</td>
+                                        <td (click)="showMark(marker)">{{marker.long}}</td>
+                                        <td *ngIf="!edit" (click)="editDirection(marker)">
+                                            <mat-icon style="cursor:pointer">edit</mat-icon>
+                                        </td>
+                                        <td *ngIf="!edit" (click)="delete(marker)">
+                                            <mat-icon style="cursor:pointer">delete</mat-icon>
+                                        </td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -43,42 +77,51 @@
                     </div>
                 </div>
             </div>
-            <div class="row mb-4" style="margin: 0;" *ngIf="showMap">
-                <div class="col-md-3">
-            
-                </div>
-                <div class="col-md-6 mt-3" style="padding: 0;">
-                    <div *ngIf="edit" class="row" style="justify-content: center;"><h4>{{objMarker.nombre}}</h4></div>
-                    <div id="mapa">
-                
-                    </div>
-                    <div class="row" style="justify-content: center;">
-                        <button *ngIf="edit" (click)="saveMarker()" class="btn btn-secondary" style="width: 95%;">Guardar</button>
-                    </div>        
-                </div>
-                <div class="col-md-3">
-                    
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="row mb-4">
-        <div class="accordion" id="accordionMakersListEdit" style="width: 100%;">
-            <div class="card mt-3">
-                <div class="card-header" id="headingOne">
-                    <h2 class="mb-0 ml-auto mr-auto">
-                        <button id="MakersListEdit" class="btn btn-link btn-block" type="button" data-toggle="collapse" (click)="statusMapEdit()"
-                            data-target="#collapseEdit" aria-expanded="false" aria-controls="collapseEdit" style="color: #6c757d;">
-                            Agregar Marcador
-                        </button>
-                    </h2>
-                </div>
+            <div style="padding: 20px;">
+                <div *ngIf="!edit" class="row">
+                    <div class="col-md-3">
 
-                <div id="collapseEdit" class="collapse show" aria-labelledby="headingOne"
-                    data-parent="#accordionMakersListEdit">
-                    <app-add-maker></app-add-maker>   
+                    </div>
+                    <div class="col-md-6">
+                        <google-map width="100%" [center]="center" [zoom]="zoom">
+                            <map-marker *ngFor="let markerPosition of markerPositions" [position]="markerPosition"
+                                [options]="markerOptions"></map-marker>
+                        </google-map>
+                    </div>
+                    <div class="col-md-3">
+
+                    </div>
+                </div>
+                <div *ngIf="edit" class="row">
+                    <div class="col-md-6">
+                        <h4>Editando</h4>
+                        <table style="width: 80%;">
+                            <tr>
+                                <th>Nombre</th>
+                                <td><input type="text" class="form-control" [(ngModel)]="updateDir.nombre"></td>
+                            </tr>
+                            <tr>
+                                <th>Descripción</th>
+                                <td><textarea class="form-control" [(ngModel)]="updateDir.descripcion"></textarea></td>
+                            </tr>
+                            <tr>
+                                <th>Dirección</th>
+                                <td><textarea class="form-control" [(ngModel)]="updateDir.direccion"></textarea></td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="col-md-6">
+                        <google-map width="100%" [center]="center" [zoom]="zoom" (mapClick)="addMarker($event)">
+                            <map-marker *ngFor="let markerPosition of markerPositions" [position]="markerPosition"
+                                [options]="markerOptions"></map-marker>
+                        </google-map>
+                        <button type="button" class="btn btn-secondary" style="width: 100%;"
+                            (click)="updateDirection()">Guardar</button>
+                    </div>
                 </div>
             </div>
+
         </div>
     </div>
+
 </div>

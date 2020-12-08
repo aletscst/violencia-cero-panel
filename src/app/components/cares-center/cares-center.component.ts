@@ -12,24 +12,20 @@ import { CaresCenterService } from 'src/app/services/cares-center.service';
 })
 export class CaresCenterComponent implements OnInit {
 
-  public makersList:markersMap[];
-  public lat:number;
-  public long:number;
+  public makersList:markersMap[] = [];
   public showMap:boolean=true;
   public mapaAdd:boolean=false;
   public edit:boolean=false;
   public prueba:string;
 
   public idMarker:number;
-  public objMarker:addMarker={
-    descripcion:'',
-    direccion:'',
-    lat:0,
-    long:0,
-    nombre:''
-  };
 
-  mapa:Mapboxgl.Map
+  public updateDir:markersMap;
+
+  public center = {lat: 19.191496, lng: -99.023021};
+  public zoom = 16;
+  public markerOptions: google.maps.MarkerOptions = {draggable: false};
+  public markerPositions: google.maps.LatLngLiteral[] = [];
 
   constructor(private serviceCaresCenter:CaresCenterService) { }
 
@@ -41,69 +37,49 @@ export class CaresCenterComponent implements OnInit {
   }
 
   loadMarkers(){
+    this.makersList = [];
     this.serviceCaresCenter.getMarkers().subscribe(resp=>{
       this.makersList = resp.data;
     });
   }
-  saveMarker(){
-    this.edit=false;
-    this.makersList.forEach(element => {
-      if(element.id === this.idMarker)
-      {
-        element.lat = this.lat;
-        element.long = this.long;
+
+  showMark(direction:markersMap){
+    
+    let mark:google.maps.LatLngLiteral = {
+      lat:direction.lat,
+      lng: direction.long
+    };
+    this.markerPositions = [];
+    this.markerPositions.push(mark);
+  }
+
+  addMarker(event: google.maps.MouseEvent) {
+    this.markerPositions = [];
+    this.updateDir.lat = event.latLng.lat();
+    this.updateDir.long = event.latLng.lng();
+    this.markerPositions.push(event.latLng.toJSON());
+  }
+
+  editDirection(direction:markersMap){
+    this.edit = true;
+    this.updateDir = direction;
+    this.showMark(direction);
+  }
+
+  updateDirection(){
+    this.serviceCaresCenter.updateMarker(this.updateDir.id,this.updateDir).subscribe(data => {
+      this.edit = false;
+      if(!data.status){
+        alert('No se pudo actualizar la direccion');
+      }else{
+        this.loadMarkers();
       }
     });
-    this.editMarker(this.long,this.lat,this.edit);
-    console.log(this.makersList);
-    console.log(this.objMarker);
-    this.serviceCaresCenter.updateMarker(this.idMarker,this.objMarker).subscribe(resp=>{
-      if(!resp.estatus)
-      console.log("Se modifico con exito")
-      else
-      alert("No se pudo modificar el marcador")
-    });
-    //console.log("Guardado")
-  }
-  editMap(obj:any){
-    this.objMarker = obj;
-    this.idMarker = obj.id;
-    this.edit = true;
-    this.mapa = new Mapboxgl.Map({
-      container: 'mapa', // container id
-      style: 'mapbox://styles/mapbox/streets-v11',
-      center: [obj.long,obj.lat], // Longitud -- @Latitud
-      zoom: 16 // starting zoom
-    });
-    this.editMarker(obj.long,obj.lat,this.edit);
-    this.showMap=true;
-  }
-
-  editMarker(lng:number,lat:number,bandera:boolean){
-    const marker = new Mapboxgl.Marker({
-      draggable: bandera
-      })
-      .setLngLat([lng, lat])
-      .addTo(this.mapa);
-      marker.on('drag',()=>{
-        this.lat = marker.getLngLat().lat;
-        this.long = marker.getLngLat().lng;
-        //console.log(marker.getLngLat());
-      });
-  }
-
-  createMarker(lng:number,lat:number){
-    const marker = new Mapboxgl.Marker({
-      draggable: false
-      })
-      .setLngLat([lng, lat])
-      .addTo(this.mapa);
-      marker.on('drag',()=>{
-        //console.log(marker.getLngLat());
-      });
   }
   
-  delete(obj:any){
+  delete(obj:markersMap){
+    if(!confirm(`Deseas eliminar ${obj.nombre}`)) return;
+    
     this.serviceCaresCenter.deleteMarker(obj.id).subscribe(resp=>{
       if(resp.status)
       this.loadMarkers();
@@ -111,30 +87,6 @@ export class CaresCenterComponent implements OnInit {
       alert("No se pudo eliminar el marcador")
     });
 
-  }
-
-  openMarker(lat:number,long:number){
-    this.mapa = new Mapboxgl.Map({
-      container: 'mapa', // container id
-      style: 'mapbox://styles/mapbox/streets-v11',
-      center: [long,lat], // Longitud -- @Latitud
-      zoom: 16 // starting zoom
-    });
-    this.createMarker(long,lat);
-    this.showMap=true;
-  }
-
-  statusMap(){
-    this.showMap = !this.showMap;
-    //console.log(this.showMap)
-  }
-
-  statusMapEdit(){
-    this.mapaAdd = !this.mapaAdd;
-    if(this.mapaAdd){
-      //this.createMarkerAdd(19.4355293,-99.143993);
-    }
-    //console.log(this.mapaAdd);
   }
 
 }

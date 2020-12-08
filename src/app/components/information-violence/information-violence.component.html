@@ -25,14 +25,16 @@
                                         <form [formGroup]="frmEditProcedure">
                                             <div class="container" [formArrayName]="'formArrayName'">
                                                 <div class="form-group col-md-12" *ngFor="let parrafo of parrafos;let i = index">
-                                                    <div class="row" [formGroupName]="i">
-                                                        <div class="col-md-6 mt-2">
-                                                            <label for="exampleInputSubtitle">Subtitulo</label>
-                                                            <input type="text" class="form-control" formControlName="regSubtitle" value="{{parrafo.subtitulo}}" id="dataSub{{i}}" placeholder="Subtitle" required>
+                                                    <div [formGroupName]="i">
+                                                        <div class="row">
+                                                            <div class="col-md-6 mt-2">
+                                                                <label for="exampleInputSubtitle">Subtitulo</label>
+                                                                <input type="text" class="form-control" formControlName="regSubtitle" value="{{parrafo.subtitulo}}" id="dataSub{{i}}" placeholder="Subtitle" required>
+                                                            </div>
                                                         </div>
-                                                        <div class="col-md-6 mt-2">
+                                                        <div>
                                                             <label for="exampleInputParrafo">Parrafo</label>
-                                                            <input type="text" class="form-control" formControlName="regParrafo" value="{{parrafo.texto}}" (ngModelChange)="onChange($event)" id="dataParrafo{{i}}" placeholder="Parrafo" required>
+                                                            <textarea cols="30" rows="5" class="form-control" formControlName="regParrafo" value="{{parrafo.texto}}" (ngModelChange)="onChange($event)" id="dataParrafo{{i}}" placeholder="Parrafo" required></textarea>
                                                         </div>
                                                     </div>
                                                 </div>

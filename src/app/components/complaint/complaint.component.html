@@ -1,3 +1,4 @@
+
 <div class="row" style="margin: 0;overflow-x: hidden;">
     <div class="container-fluid ml-1 mr-1" style="margin: 0;overflow-x:hidden;">
         <div class="row mt-3 mb-3" style="border:1px solid rgba(0,0,0,.125);margin: 0;padding: 6px;border-radius: 5px;">
@@ -55,7 +56,11 @@
             </div>
         </div>
     </div>
-    <div class="col-md-12 ml-1 mr-1">
+    <div *ngIf="dataComplaints.length == 0" style=" padding-top: 50px; padding-bottom: 50px; width: 100%;">
+        <mat-spinner  [diameter]="80" style="margin:0 auto;"></mat-spinner>
+    </div>
+    
+    <div *ngIf="dataComplaints.length > 0" class="col-md-12 ml-1 mr-1">
         <ul class="list-group mt-1" *ngFor="let complaint of dataComplaints;let i = index">
             <li class="list-group-item" style="text-align: justify;">
                 <div class="row">

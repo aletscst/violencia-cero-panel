@@ -33,7 +33,7 @@ export class ComplaintComponent implements OnInit {
     "CANCELADO",
     "PROCESO"
   ];
-  public statusSearch:String;
+  public statusSearch:String = 'TODOS';
   public dateIni:String='';
   public dateFin:String='';
 
@@ -70,6 +70,7 @@ export class ComplaintComponent implements OnInit {
   }
 
   searchComplaint(){
+    this.dataComplaints = [];
     this.sendJsonSearch.status = this.statusSearch;
     this.sendJsonSearch.dateIni = this.dateIni;
     this.sendJsonSearch.dateFin = this.dateFin;
