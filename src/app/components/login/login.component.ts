@@ -32,7 +32,7 @@ export class LoginComponent implements OnInit {
     sendObj.password =this.frmLogin.value.password;
     this.serviceLogin.auth(sendObj).subscribe(resp=>{
       if(resp.status){
-      console.log("Inicio sesion",resp.token);
+      //console.log("Inicio sesion",resp.token);
       localStorage.setItem('user',JSON.stringify(resp));
       this.router.navigate(['complaint']);
       }
@@ -63,25 +63,25 @@ export class RegisterDialog implements OnInit{
   });
   }
 
-  onSubmit(){
-    let sendObj:Register={
-      apellido:'',
-      email:'',
-      nombre:'',
-      password:''
-    };
-    sendObj.nombre = this.frmRegister.value.username;
-    sendObj.apellido = this.frmRegister.value.lastname;
-    sendObj.email = this.frmRegister.value.email;
-    sendObj.password = this.frmRegister.value.password;
-    console.log(sendObj)
-    this.serviceLogin.register(sendObj).subscribe(resp=>{
-      if(resp.status)
-      console.log("Se registro correctamente")
-      else
-      alert("No pudo registrarse correctamente")
-    })
-    console.log(this.frmRegister.value)
-  }
+  //onSubmit(){
+  //  let sendObj:Register={
+  //    apellido:'',
+  //    email:'',
+  //    nombre:'',
+  //    password:''
+  //  };
+  //  sendObj.nombre = this.frmRegister.value.username;
+  //  sendObj.apellido = this.frmRegister.value.lastname;
+  //  sendObj.email = this.frmRegister.value.email;
+  //  sendObj.password = this.frmRegister.value.password;
+  //  console.log(sendObj)
+  //  this.serviceLogin.register(sendObj).subscribe(resp=>{
+  //    if(resp.status)
+  //    console.log("Se registro correctamente")
+  //    else
+  //    alert("No pudo registrarse correctamente")
+  //  })
+  //  console.log(this.frmRegister.value)
+  //}
 
 }

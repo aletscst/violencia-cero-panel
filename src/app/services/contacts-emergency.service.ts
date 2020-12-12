@@ -8,8 +8,8 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class ContactsEmergencyService {
-  //private url = 'http://localhost:3000/contactos/';
-  private url = 'http://201.116.12.210:3000/contactos/';
+  //private url = 'http://localhost:3000/contactos';
+  private url = 'http://201.116.12.210:3000/contactos';
 
   constructor(private _http:HttpClient) { }
 

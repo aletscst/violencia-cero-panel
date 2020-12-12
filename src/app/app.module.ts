@@ -30,7 +30,8 @@ import { respLogin } from './models/login-model';
 import { JwtModule } from '@auth0/angular-jwt';
 import { JwtInterceptor } from './components/interceptor/token-interceptor';
 
-import {GoogleMapsModule} from '@angular/google-maps'; 
+import {GoogleMapsModule} from '@angular/google-maps';
+import { UsersComponent } from './components/users/users.component'; 
 
 export function jwtTokenGetter(){
   const user:respLogin = JSON.parse(localStorage.getItem('user'));
@@ -54,7 +55,8 @@ export function jwtTokenGetter(){
     InformationViolence,
     CaresCenterComponent,
     AddMakerComponent,
-    ComplaintDetailComponent
+    ComplaintDetailComponent,
+    UsersComponent
   ],
   imports: [
     BrowserModule,

@@ -4,6 +4,8 @@ import { environment } from 'src/environments/environment';
 import * as Mapboxgl from 'mapbox-gl';
 import { addMarker, markersMap } from 'src/app/models/cares-center-model';
 import { CaresCenterService } from 'src/app/services/cares-center.service';
+import { LoginService } from 'src/app/services/login.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-cares-center',
@@ -27,13 +29,16 @@ export class CaresCenterComponent implements OnInit {
   public markerOptions: google.maps.MarkerOptions = {draggable: false};
   public markerPositions: google.maps.LatLngLiteral[] = [];
 
-  constructor(private serviceCaresCenter:CaresCenterService) { }
+  constructor(private serviceCaresCenter:CaresCenterService, private usersServ:LoginService, private router: Router) { }
 
   ngOnInit(): void {
 
-    (Mapboxgl as any).accessToken = environment.mapboxKey;
-    //this.createMarkerAdd(19.4355293,-99.143993);
-    this.loadMarkers();
+    this.usersServ.getUserData().subscribe(data => {
+      if(data.tipo == 'ADMIN'){
+        this.loadMarkers();
+      }else{ alert('Usuario Sin Permisos'); this.router.navigate(['/complaint']);}
+    }, error => {alert('Usuario Sin Permisos'); this.router.navigate(['/complaint']);});
+    
   }
 
   loadMarkers(){

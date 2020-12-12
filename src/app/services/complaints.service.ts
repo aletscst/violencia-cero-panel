@@ -11,8 +11,8 @@ import { Denuncia, denunciaObj, respData, searchComplaint,respStatus } from '../
 export class ComplaintsService {
 
   
-  //private url = 'http://localhost:3000/denuncias/';
-  private url = 'http://201.116.12.210:3000/denuncias/';
+  //private url = 'http://localhost:3000/denuncias';
+  private url = 'http://201.116.12.210:3000/denuncias';
 
   constructor(private _http:HttpClient) { }
   
@@ -27,7 +27,7 @@ export class ComplaintsService {
     return this._http.put<respStatus>(this.url+id,obj)
   }
   searchComplaints(obj:searchComplaint):Observable<denunciaObj>{
-    return this._http.post<denunciaObj>(this.url+'history',obj);
+    return this._http.post<denunciaObj>(this.url+'/history',obj);
   }
   
 }

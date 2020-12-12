@@ -9,7 +9,6 @@ import { LoginService } from 'src/app/services/login.service';
 })
 export class AsideMenuComponent implements OnInit {
 
-  showFiller = false;
   constructor(public router: Router, public authService:LoginService) { }
 
   ngOnInit(): void {

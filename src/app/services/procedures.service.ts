@@ -9,8 +9,8 @@ import { ListProcedures, ObjProcedures, objRespByID, objRespProcedures, reqDataP
 })
 export class ProceduresService {
 
-  //private url = 'http://localhost:3000/procedimientos/';
-  private url = 'http://201.116.12.210:3000/procedimientos/';
+  //private url = 'http://localhost:3000/procedimientos';
+  private url = 'http://201.116.12.210:3000/procedimientos';
 
   constructor(private _http:HttpClient) { }
   getListProcedures():Observable<objRespProcedures>{

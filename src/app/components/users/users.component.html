@@ -1,0 +1,157 @@
+<div class="container">
+    <div class="row" style="margin: 0;">
+        <div class="col-md-6">
+            <div class="card-body"
+                style="border: 2px solid #0C21F4;border-radius: 10px; text-align: center;font-size: 18px;">
+                Usuarios Registrados App: {{usersApp.length}}
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="card-body"
+                style="border: 2px solid #08AC00;border-radius: 10px;text-align: center;font-size: 18px;">
+                Usuarios Registrados Panel: {{usersPanel.length}}
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="accordion" id="accordionMakersList" style="width: 100%;">
+            <div class="row mb-4" style="margin: 0;">
+                <div class="accordion" id="accordionMakersListEdit" style="width: 100%;">
+                    <div class="card mt-3">
+                        <div class="card-header" id="headingOne">
+                            <h2 class="mb-0 ml-auto mr-auto">
+                                <button id="MakersListEdit" class="btn btn-link btn-block" type="button"
+                                    data-toggle="collapse" data-target="#collapseEdit" aria-expanded="false"
+                                    aria-controls="collapseEdit" style="color: #6c757d;">
+                                    Lista Usuarios App
+                                </button>
+                            </h2>
+                        </div>
+
+                        <div id="collapseEdit" class="collapse" aria-labelledby="headingOne"
+                            data-parent="#accordionMakersListEdit">
+                            <div *ngIf="usersApp.length == 0"
+                                style=" padding-top: 50px; padding-bottom: 50px; width: 100%;">
+                                <mat-spinner [diameter]="80" style="margin:0 auto;"></mat-spinner>
+                            </div>
+                            <table *ngIf="usersApp.length > 0" style="width: 100%;" class="table table-striped">
+                                <thead>
+                                    <tr style="background-color: #6c757d;">
+                                        <th style="color: white;">Nombre</th>
+                                        <th style="color: white;">Apellido P</th>
+                                        <th style="color: white;">Apellido M</th>
+                                        <th style="color: white;">Correo</th>
+                                        <th style="color: white;">Telefono</th>
+                                        <th style="text-align: center; color: white;">Opcs</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let user of usersApp">
+                                        <td>{{user.nombre}}</td>
+                                        <td>{{user.apellidoP}}</td>
+                                        <td>{{user.apellidoM}}</td>
+                                        <td>{{user.email}}</td>
+                                        <td>{{user.tel}}</td>
+                                        <td style="text-align: center;">
+                                            <mat-icon (click)="deleteUserApp(user.id)" style="cursor: pointer;">delete</mat-icon>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card mt-3">
+                <div class="card-header" id="headingOne">
+                    <h2 class="mb-0 ml-auto mr-auto">
+                        <button id="MakersList" class="btn btn-link btn-block" type="button" data-toggle="collapse"
+                            data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne"
+                            style="color: #6c757d;">
+                            Lista Usuarios Panel
+                        </button>
+                    </h2>
+                </div>
+
+                <div id="collapseOne" class="collapse show" aria-labelledby="headingOne"
+                    data-parent="#accordionMakersList">
+                    <div style="padding: 30px 10px">
+                        <button type="button" class="btn btn-secondary" style="width: 30%;" (click)="newUser(null)">Agregar
+                            Usuario</button>
+                    </div>
+                    <div *ngIf="isAdding" style="padding: 0 10px 20px 10px;">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label for="nombre">Nombre</label>
+                                <input id="nombre" type="text" class="form-control form-control-sm"
+                                    [(ngModel)]="newUserPanel.nombre">
+                            </div>
+                            <div class="col-md-6">
+                                <label for="apellido">Apellido</label>
+                                <input id="apellido" type="text" class="form-control form-control-sm"
+                                    [(ngModel)]="newUserPanel.apellido">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <label for="email">Email</label>
+                                <input id="email" type="email" class="form-control form-control-sm"
+                                    [(ngModel)]="newUserPanel.email">
+                            </div>
+                            <div class="col-md-4">
+                                <label for="contra">Contraseña</label>
+                                <input id="contra" type="password" class="form-control form-control-sm"
+                                    [(ngModel)]="newUserPanel.password">
+                            </div>
+                            <div class="col-md-4">
+                                <label for="tipo">Tipo</label>
+                                <select id="tipo" class="form-control form-control-sm" [(ngModel)]="newUserPanel.tipo">
+                                    <option value="USER">USER</option>
+                                    <option value="ADMIN">ADMIN</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div style="text-align: end; padding: 20px 10px;">
+                            <button type="button" style="margin-right: 10px;" class="btn btn-secondary"
+                                (click)="saveUser()">Agregar</button>
+                            <button type="button" class="btn btn-secondary" (click)="isAdding = false">Cancelar</button>
+                        </div>
+                    </div>
+                    <div *ngIf="usersPanel.length == 0" style=" padding-top: 50px; padding-bottom: 50px; width: 100%;">
+                        <mat-spinner [diameter]="80" style="margin:0 auto;"></mat-spinner>
+                    </div>
+                    <table *ngIf="usersPanel.length > 0" style="width: 100%;" class="table table-striped">
+                        <thead>
+                            <tr style="background-color: #6c757d;">
+                                <th style="color: white;">Nombre</th>
+                                <th style="color: white;">Apellido</th>
+                                <th style="color: white;">Correo</th>
+                                <th style="color: white;">Tipo</th>
+                                <th style="color: white; text-align: center;">Opcs</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let user of usersPanel">
+                                <td>{{user.nombre}}</td>
+                                <td>{{user.apellido}}</td>
+                                <td>{{user.email}}</td>
+                                <td>{{user.tipo}}</td>
+                                <td>
+                                    <div class="row">
+                                        <div class="col-md-6" style="text-align: center;">
+                                            <mat-icon (click)="newUser(user)" style="cursor: pointer;">edit</mat-icon>
+                                        </div>
+                                        <div class="col-md-6" style="text-align: center;">
+                                            <mat-icon (click)="deleteUserPanel(user.id)" style="cursor: pointer;">delete</mat-icon>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

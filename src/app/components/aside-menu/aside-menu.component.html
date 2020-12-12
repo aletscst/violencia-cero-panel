@@ -13,6 +13,7 @@
         <p (click)="drawer.close()" class="link-menu" [routerLink]="['/information']" routerLinkActive="active"><a><mat-icon style="font-size: 20px;font-weight: 400;float: left;">info</mat-icon>&nbsp;Informacion sobre la violencia</a></p>-->
         <p (click)="drawer.close()" class="link-menu" [routerLink]="['/complaint']" routerLinkActive="active"><a><mat-icon style="font-size: 20px;font-weight: 900;float: left;">store</mat-icon>Denuncia</a></p>
         <p (click)="drawer.close()" class="link-menu" [routerLink]="['/care-center']" routerLinkActive="active"><a><mat-icon style="font-size: 20px;font-weight: 900;float: left;"> location_on</mat-icon>Centros de Atención</a></p>
+        <p (click)="drawer.close()" class="link-menu" [routerLink]="['/users']" routerLinkActive="active"><a><mat-icon style="font-size: 20px;font-weight: 900;float: left;"> account_circle</mat-icon>Usuarios</a></p>
         <p class="link-menu" [routerLink]="['/login']" (click)="logout(); drawer.close();"><a><mat-icon style="font-size: 20px;font-weight: 900;float: left;"> power_settings_new</mat-icon>Logout</a></p>
     </mat-drawer>
     <div class="example-sidenav-content" fxFlexFill>

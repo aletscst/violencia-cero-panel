@@ -10,12 +10,14 @@ import { HomeComponent } from './components/home/home.component';
 import { InformationViolenceComponent } from './components/information-violence/information-violence.component';
 import { LoginComponent } from './components/login/login.component';
 import { ProceduresComponent } from './components/procedures/procedures.component';
+import { UsersComponent } from './components/users/users.component';
 
 import { AuthGuard } from './guards/auth.guard'
 const routes: Routes = [
   { path:'', redirectTo:'complaint', pathMatch:'full'},
   { path:'login', component:LoginComponent },
   { path:'contacts',component:ContactsEmergencyComponent,canActivate:[AuthGuard]},
+  { path:'users',component:UsersComponent,canActivate:[AuthGuard]},
   { path:'procedures',component:ProceduresComponent,canActivate:[AuthGuard]},
   { path:'complaint',component:ComplaintComponent,canActivate:[AuthGuard]},
   { path:'information',component:InformationViolenceComponent,canActivate:[AuthGuard]},
