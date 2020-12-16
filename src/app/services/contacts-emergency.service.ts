@@ -23,11 +23,11 @@ export class ContactsEmergencyService {
   }
 
   updateContacto(id:number,obj:ContactsSend):Observable<respStatus>{
-    return this._http.put<respStatus>(this.url+id.toString(), obj);
+    return this._http.put<respStatus>(this.url+'/'+id.toString(), obj);
   }
 
   deleteContact(id:number):Observable<respStatus>{
-    return this._http.delete<respStatus>(this.url+id);
+    return this._http.delete<respStatus>(this.url+'/'+id);
   }
 
 }

@@ -17,15 +17,15 @@ export class ProceduresService {
     return this._http.get<objRespProcedures>(this.url);
   }
   getProcedurebyID(id:number):Observable<objRespByID>{
-    return this._http.get<objRespByID>(this.url+id.toString());
+    return this._http.get<objRespByID>(this.url+'/'+id.toString());
   }
   addProcedure(obj:reqDataProcedure):Observable<respStatus>{
     return this._http.post<respStatus>(this.url,obj);
   }
   deleteProcedure(id:number):Observable<respStatus>{
-    return this._http.delete<respStatus>(this.url+id);
+    return this._http.delete<respStatus>(this.url+'/'+id);
   }
   updateProcedure(id:number,obj:objRespByID):Observable<respStatus>{
-    return this._http.put<respStatus>(this.url+id,obj)
+    return this._http.put<respStatus>(this.url+'/'+id,obj)
   }
 }

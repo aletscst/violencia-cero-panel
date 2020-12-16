@@ -16,16 +16,16 @@ export class InformationViolenceService {
     return this._http.get<getObjViolence>(this.url);
   }
   getViolencebyID(id:number):Observable<getObjViolenceID>{
-    return this._http.get<getObjViolenceID>(this.url+id.toString());
+    return this._http.get<getObjViolenceID>(this.url+'/'+id.toString());
   }
   addViolence(obj:reqObjParrafos):Observable<respStatus>{
     return this._http.post<respStatus>(this.url,obj);
   }
   deleteViolence(id:number):Observable<respStatus>{
-    return this._http.delete<respStatus>(this.url+id);
+    return this._http.delete<respStatus>(this.url+'/'+id);
   }
   updateViolence(id:number,obj:updateViolence):Observable<respStatus>{
-    return this._http.put<respStatus>(this.url+id,obj)
+    return this._http.put<respStatus>(this.url+'/'+id,obj)
   }
 
 }

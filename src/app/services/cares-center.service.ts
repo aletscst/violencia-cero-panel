@@ -18,7 +18,7 @@ export class CaresCenterService {
   }
   // Yo no la utilizo
   getMarkerID(id:number):Observable<markersMap>{
-    return this.http.get<markersMap>(this.url+id);
+    return this.http.get<markersMap>(this.url+'/'+id);
   }
   
   addMarker(obj:addMarker):Observable<respStatus>{
@@ -26,11 +26,11 @@ export class CaresCenterService {
   }
 
   updateMarker(id:number,obj:addMarker):Observable<respStatus>{
-    return this.http.put<respStatus>(this.url+id,obj);
+    return this.http.put<respStatus>(this.url+'/'+id,obj);
   }
   
   deleteMarker(id:number):Observable<respStatus>{
-    return this.http.delete<respStatus>(this.url+id);
+    return this.http.delete<respStatus>(this.url+'/'+id);
   }
 
   /*
