@@ -61,6 +61,7 @@
     </div>
     
     <div *ngIf="dataComplaints.length > 0" class="col-md-12 ml-1 mr-1">
+        <button type="button" class="btn btn-success" (click)="exportExcel()">Excel</button>
         <ul class="list-group mt-1" *ngFor="let complaint of dataComplaints;let i = index">
             <li class="list-group-item" style="text-align: justify;">
                 <div class="row">
@@ -78,7 +79,7 @@
                     </div>
                     <div class="col-md-2 col-sm-2" style="text-align: right;"
                         (click)="openComplaintDetail(complaint.id)" style="cursor: pointer;">
-                        {{complaint.dateRequest}}
+                        {{complaint.fechaSolicitud | date:'dd/MM/yyyy'}}
                     </div>
                     <div class="col-md-1 col-sm-1" style="padding: 0;">
                         <!--a class="badge" [ngClass]="{'badge-success': complaint.status == 'Completado','badge-secondary': complaint.status == 'Verificando','badge-danger': complaint.status == 'Denegado','badge-info': complaint.status == 'Proceso'}" style="float: right;font-weight: 400; width: 75px;">

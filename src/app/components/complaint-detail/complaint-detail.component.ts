@@ -50,7 +50,7 @@ export class ComplaintDetailComponent implements OnInit {
       telefono:''
     }
   };
-  public load:boolean=false;
+  public load:boolean=true;
 
   constructor(private actRoute: ActivatedRoute,private serviceDenuncia:ComplaintsService) {
     this.product_id = this.actRoute.snapshot.params.id;
@@ -60,12 +60,7 @@ export class ComplaintDetailComponent implements OnInit {
   ngOnInit(): void {
     this.serviceDenuncia.getCompaintID(Number(this.product_id)).subscribe(resp=>{
       this.dataResp = resp;
-      //console.log(this.dataResp);
-      //console.log(this.dataResp.denunciado.nombres);
-      //console.log(resp);
-      setTimeout(()=>{                           //<<<---using ()=> syntax
-        this.load = true;
-   }, 3000);
+      this.load = false;
     });
   }
 
@@ -95,7 +90,7 @@ export class ComplaintDetailComponent implements OnInit {
       const pdfHeight = (imgProps.height * pdfWidth) / imgProps.width;
       doc.addImage(img, 'PNG', bufferX, bufferY, pdfWidth, pdfHeight, undefined, 'FAST');
       return doc;
-    })
+    });
     html2canvas(DATA2,options).then((canvas) => {
 
       const img = canvas.toDataURL('image/PNG');
@@ -123,7 +118,7 @@ export class ComplaintDetailComponent implements OnInit {
       doc.addImage(img, 'PNG', bufferX, bufferY, pdfWidth, pdfHeight, undefined, 'FAST');
       return doc;
     }).then((docResult) => {
-      docResult.save('prueba.pdf');
+      docResult.save('Denuncia.pdf');
     });
   }
 }

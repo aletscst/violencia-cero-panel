@@ -1,10 +1,13 @@
 <div class="row" id="modalMain">
-    <div class="col-md mt-3" id="htmlData" >
-        <div class="card" *ngIf="load">
+    <div class="col-md mt-3" id="htmlData">
+        <div *ngIf="load" style=" padding-top: 50px; padding-bottom: 50px; width: 100%;">
+            <mat-spinner [diameter]="80" style="margin:0 auto;"></mat-spinner>
+        </div>
+        <div class="card" *ngIf="!load">
             <div class="row">
                 <div class="col-md-12 col-sm-10 mt-3">
-                    <input type="text" id="dataParrafo" class="form-control" [(ngModel)]="titleProcedure" value="{{parrafoObj.titulo}}"
-                        style="text-align: center;font-size: 26px;font-weight: 500;">
+                    <input type="text" id="dataParrafo" class="form-control" [(ngModel)]="titleProcedure"
+                        value="{{parrafoObj.titulo}}" style="text-align: center;font-size: 26px;font-weight: 500;" placeholder="Titulo">
                 </div>
             </div>
             <form [formGroup]="frmEditProcedure">
@@ -14,14 +17,16 @@
                             <div class="row">
                                 <div class="col-md-12 mb-2 mt-2">
                                     <input type="text" id="dataSub{{i}}" class="form-control"
-                                        formControlName="EditSubtitle" value="{{parrafo.subtitulo}}"
-                                        style="font-size: 20px;font-weight: 500;">
+                                        formControlName="EditSubtitle" value="{{parrafo.link}}"
+                                        style="font-size: 20px;font-weight: 500;" placeholder="Link">
                                 </div>
                                 <div class="col-md-12 mb-2 mt-2">
                                     <!--input type="area" id="dataParrafo{{i}}" class="form-control"
                                         formControlName="EditParrafo" value="{{parrafo.texto}}"
                                         style="font-size: 18px;font-weight: 350;"-->
-                                    <textarea class="form-control" id="dataParrafo{{i}}" formControlName="EditParrafo" value="{{parrafo.texto}}" style="font-size: 18px;font-weight: 350;" rows="4"></textarea>
+                                    <textarea class="form-control" id="dataParrafo{{i}}" formControlName="EditParrafo"
+                                        value="{{parrafo.texto}}" style="font-size: 18px;font-weight: 350;"
+                                        rows="4" placeholder="Texto"></textarea>
                                 </div>
                             </div>
                         </div>
@@ -29,16 +34,9 @@
 
                 </div>
             </form>
-            <div class="row">
-                <div class="col-md-6"></div>
-                <div class="col-md-2 my-2 mr-1">
-                    <button type="button" class="btn btn-secondary btn-sm" style="border-radius: 0;width: 100%;"
-                         (click)="addParrafo()">Agregar Parrafo</button>
-                </div>
-                <div class="col-md-2 my-2 mr-1">
-                    <button type="submit" class="btn btn-secondary btn-sm" style="border-radius: 0;width: 100%;"
-                        (click)="onSubmit()">Guardar</button>
-                </div>
+            <div style="text-align: center;">
+                <button type="submit" class="btn btn-secondary btn-sm" style="border-radius: 0;width: 40%;"
+                    (click)="onSubmit()">Guardar</button>
             </div>
         </div>
     </div>

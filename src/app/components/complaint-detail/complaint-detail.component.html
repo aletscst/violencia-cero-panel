@@ -1,5 +1,5 @@
 <div class="container" style="overflow-x: hidden;">
-    <div *ngIf="load" id="htmlData" class="row mt-4 mb-4" style="border: 1px solid #AEAEAE;padding: 10px;border-radius: 10px;">
+    <div *ngIf="!load" id="htmlData" class="row mt-4 mb-4" style="border: 1px solid #AEAEAE;padding: 10px;border-radius: 10px;">
         <div class="col-md-12">
             <h3 style="text-align: center;">REGISTRO DE ATENCIÓN</h3>
         </div>
@@ -174,7 +174,7 @@
         <button class="btn btn-secondary btn-sm"
                 style="width: 100%;border-radius: 0;font-size: 20px;text-align: center;" (click)="downloadPDF()">
                 <mat-icon class="mt-auto mb-auto" style="font-size: 20px;"> insert_drive_file</mat-icon> &nbsp;PDF
-            </button>
+        </button>
     </div>
 </div>
 <router-outlet></router-outlet>

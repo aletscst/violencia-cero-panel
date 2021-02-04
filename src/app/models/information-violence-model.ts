@@ -4,11 +4,11 @@ export interface Data{
 }
 export interface getObjViolence{
     status:boolean;
-    data:Data;
+    data:Data[];
 }
 export interface Parrafos{
-    subtitulo:String;
     texto:String;
+    link:String;
 }
 export interface getObjViolenceID{
     id:number;

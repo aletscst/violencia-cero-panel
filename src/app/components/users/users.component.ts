@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Register, UserApp, UserPanel } from 'src/app/models/login-model';
 import { LoginService } from 'src/app/services/login.service';
+import * as xlsx from 'xlsx';
 
 @Component({
   selector: 'app-users',
@@ -116,6 +117,26 @@ export class UsersComponent implements OnInit {
     if(this.newUserPanel.password == '') return false;
 
     return true;
+  }
+
+  exportExcel() {
+    const worksheet = xlsx.utils.json_to_sheet(this.usersApp);
+    const workbook = { Sheets: { 'data': worksheet }, SheetNames: ['data'] };
+    const excelBuffer: any = xlsx.write(workbook, { bookType: 'xlsx', type: 'array' });
+    this.saveAsExcelFile(excelBuffer, 'Usuarios App');
+
+  }
+
+  saveAsExcelFile(buffer: any, fileName: string): void {
+    import("file-saver").then(FileSaver => {
+      let EXCEL_TYPE = 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=UTF-8';
+      let EXCEL_EXTENSION = '.xlsx';
+      const data: Blob = new Blob([buffer], {
+        type: EXCEL_TYPE
+      });
+      FileSaver.saveAs(data, fileName + new Date().toLocaleDateString() + EXCEL_EXTENSION);
+
+    });
   }
 
 }

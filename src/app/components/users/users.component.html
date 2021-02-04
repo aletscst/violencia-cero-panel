@@ -35,6 +35,7 @@
                                 style=" padding-top: 50px; padding-bottom: 50px; width: 100%;">
                                 <mat-spinner [diameter]="80" style="margin:0 auto;"></mat-spinner>
                             </div>
+                            <button type="button" class="btn btn-success" style="width: 15%;" (click)="exportExcel()">Excel</button>
                             <table *ngIf="usersApp.length > 0" style="width: 100%;" class="table table-striped">
                                 <thead>
                                     <tr style="background-color: #6c757d;">
