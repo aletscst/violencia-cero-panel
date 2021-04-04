@@ -20,6 +20,7 @@ export class ComplaintDetailComponent implements OnInit {
       codigoPostal:'',
       domicilio:'',
       edad:0,
+      genero:'',
       id:0,
       idDenuncia:0,
       nombres:'',
@@ -97,7 +98,7 @@ export class ComplaintDetailComponent implements OnInit {
 
       // Add image Canvas to PDF
       const bufferX = 15;
-      const bufferY = 500;
+      const bufferY = 250;
       const imgProps = (doc as any).getImageProperties(img);
       const pdfWidth = doc.internal.pageSize.getWidth() - 2 * bufferX;
       const pdfHeight = (imgProps.height * pdfWidth) / imgProps.width;
@@ -110,11 +111,11 @@ export class ComplaintDetailComponent implements OnInit {
 
       // Add image Canvas to PDF
       const bufferX = 15;
-      const bufferY = 15;
+      const bufferY = 440;
       const imgProps = (doc as any).getImageProperties(img);
       const pdfWidth = doc.internal.pageSize.getWidth() - 2 * bufferX;
       const pdfHeight = (imgProps.height * pdfWidth) / imgProps.width;
-      doc.addPage();
+      //doc.addPage();
       doc.addImage(img, 'PNG', bufferX, bufferY, pdfWidth, pdfHeight, undefined, 'FAST');
       return doc;
     }).then((docResult) => {

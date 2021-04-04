@@ -45,6 +45,7 @@ export interface Denunicado{
     apellidoPaterno:String;
     parentesco:String;
     edad:Number;
+    genero:String;
     ocupacion:String;
     domicilio:String;
     codigoPostal:String;

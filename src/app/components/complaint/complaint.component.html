@@ -45,7 +45,7 @@
             <div class="col-md-3">
                 <div class="card-body"
                     style="border: 2px solid #EE0000;border-radius: 10px;text-align: center;font-size: 18px;">
-                    Total Cancelado: {{statusCancelados}}
+                    Total Cancelados: {{statusCancelados}}
                 </div>
             </div>
             <div class="col-md-3">
@@ -65,17 +65,11 @@
         <ul class="list-group mt-1" *ngFor="let complaint of dataComplaints;let i = index">
             <li class="list-group-item" style="text-align: justify;">
                 <div class="row">
-                    <div class="col-md-2 col-sm-2" (click)="openComplaintDetail(complaint.id)" style="cursor: pointer;">
+                    <div class="col-md-4 col-sm-4" (click)="openComplaintDetail(complaint.id)" style="cursor: pointer;">
                         <strong>Usuario:</strong>&nbsp;<p>{{complaint.usuarioSolicitante}}</p>
                     </div>
-                    <div class="col-md-3 col-sm-3" (click)="openComplaintDetail(complaint.id)" style="cursor: pointer;">
+                    <div class="col-md-4 col-sm-4" (click)="openComplaintDetail(complaint.id)" style="cursor: pointer;">
                         <strong>Solicitante:</strong>&nbsp;<p>{{complaint.nombreSolicitante}}</p>
-                    </div>
-                    <div class="col-md-2 col-sm-2" (click)="openComplaintDetail(complaint.id)" style="cursor: pointer;">
-
-                    </div>
-                    <div class="col-md-1 col-sm-1" (click)="openComplaintDetail(complaint.id)" style="cursor: pointer;">
-
                     </div>
                     <div class="col-md-2 col-sm-2" style="text-align: right;"
                         (click)="openComplaintDetail(complaint.id)" style="cursor: pointer;">

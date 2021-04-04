@@ -50,7 +50,7 @@ export class ComplaintComponent implements OnInit {
       this.sumaEstatus(this.dataComplaints);
       //console.log(this.dataComplaints)
       //console.log(this.statusData)
-    });
+    }, err => alert('No se encontraron resultados'));
   }
 
   sumaEstatus(obj:Denuncia[]){
